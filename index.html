@@ -9,6 +9,16 @@
 <style>
   * {font-family: "Times New Roman"}
   div {margin: 0 auto; text-align: center}
+  img {
+    width: 500px; /* default width for computers */
+  }
+
+  @media only screen and (max-width: 600px) { /* target devices with screen width up to 600px */
+    img {
+      width: 700px; /* change width to 700px for phones */
+    }
+  }
+
 </style>
 <div>
   <!-- <picture>
@@ -20,5 +30,5 @@
     <img src="video.gif" alt="fallback image">
   </picture>
   -->
-  <img width="500" src="video.gif" alt="fallback image">
+  <img src="video.gif" alt="fallback image">
 </div>
