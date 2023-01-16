@@ -5,23 +5,34 @@
   <meta property="og:title" content="Caroline Coolidge">
   <!-- <meta property="og:description" content="undefined"> -->
   <meta property="og:image" content="https://carolinecoolidge.com/opengraph.png">
+  <style>
+    * {font-family: "Times New Roman"}
+    div {margin: 0 auto; text-align: center}
+    @media only screen and (min-width: 768px) {
+        img {
+          width: 500px; /* Width of image on desktop */
+          margin: 0 auto; /* Center the image horizontally */
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+      }
+      
+      /* Styles for phone screens */
+      @media only screen and (max-width: 767px) {
+        img {
+          width: 80%; /* Width of image on phone */
+          margin: 0 auto; /* Center the image horizontally */
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+      }
+
+  </style>
 </head>
-<style>
-  * {font-family: "Times New Roman"}
-  div {margin: 0 auto; text-align: center}
-  img {
-    width: 500px; /* default width for computers */
-  }
-
-  @media all and (max-width: 600px) { /* target devices with screen width up to 600px */
-    img {
-      width: 100%; /* change width to 700px for phones */
-      position: absolute;
-      top: 40%;
-    }
-  }
-
-</style>
 <div>
   <!-- <picture>
     <video media="(min-width:650px)" width="500" loop autoplay playsinline>
