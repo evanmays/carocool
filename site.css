@@ -26,6 +26,33 @@ a:visited {
     margin: 0 8px;
   }
 }
+
+.container.middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 1200px) {
+  .container.middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    transform: translate(-50%,-50%);
+  }
+}
+@media (min-width: 800px) and (max-width: 1199px) {
+  .container.middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    transform: translate(-50%,-50%);
+  }
+}
+
 .header, .footer {
   text-align: center;
   width: 100%;

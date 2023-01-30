@@ -6,6 +6,10 @@
   padding: 16px 40px;
 }
 
+.name {
+  font-style: italic;
+}
+
 .hamburger-menu {
   cursor: pointer;
 }
@@ -62,7 +66,7 @@ img.close, .container.close {
   transform: rotate(45deg) translate(-8px, -8px);
 }
 
-@media (min-width: 769px) {
+/* @media (min-width: 769px) {
   .nav-items {
     display: flex;
     flex-direction: row;
@@ -76,4 +80,4 @@ img.close, .container.close {
   .hamburger-menu {
     display: none;
   }
-}
+} */
