@@ -1,0 +1,60 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Signika&display=swap'); */
+body {
+  background-color: #F8F8F8;
+}
+a:visited {
+  color: rgb(0, 0, 238);;
+}
+.container {
+  font-family: "Times New Roman", Times, serif;
+  margin: 0 auto;
+  padding: 20px;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1199px) {
+  .container {
+    max-width: 800px;
+  }
+}
+@media (max-width: 799px) {
+  .container {
+    max-width: none;
+    margin: 0 8px;
+  }
+}
+.header, .footer {
+  text-align: center;
+  width: 100%;
+  margin-top:60px;
+  margin-bottom:60px;
+}
+
+.row {
+  display: flex;
+  /* justify-content: space-between; */
+  justify-content: center;
+  margin: 20px;
+}
+.image-column {
+  width: 62%;
+  margin: 8px;
+}
+.text-column {
+  width: 38%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 799px) {
+  .image-column, .text-column {
+    width: 100%;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
