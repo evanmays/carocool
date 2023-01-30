@@ -6,5 +6,6 @@ const container = document.querySelector(".container");
 hamburgerMenu.addEventListener("click", () => {
   hamburgerMenu.classList.toggle("change");
   navItems.classList.toggle("open");
-  container.classList.toggle("close")
+  img.classList.toggle("close");
+  container.classList.toggle("close");
 });
