@@ -12,11 +12,17 @@ a:active {color: black;text-decoration: none;}    /* selected link */
 .container {
   font-family: "Times New Roman", Times, serif;
   margin: 0 auto;
+  margin-top:60px;
   padding: 20px;
 }
-@media (min-width: 1200px) {
+@media (min-width: 1600px) {
   .container {
-    max-width: 1200px;
+    max-width: 1600px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .container {
+    max-width: 1000px;
   }
 }
 @media (min-width: 800px) and (max-width: 1199px) {
