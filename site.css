@@ -66,6 +66,14 @@ a:active {color: black;text-decoration: none;}    /* selected link */
   margin-top: 100px;
   margin-bottom: 100px;
 }
+.artcontainer .row:first-of-type {
+  margin-top: 20px;
+}
+
+.artcontainer video {
+  width: 100%;
+  height: auto;
+}
 
 .image-column {
   width: 62%;
