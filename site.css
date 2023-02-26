@@ -61,9 +61,12 @@ a:active {color: black;text-decoration: none;}    /* selected link */
   /* justify-content: space-between; */
   justify-content: center;
   margin: 20px;
+}
+.artcontainer .row {
   margin-top: 100px;
   margin-bottom: 100px;
 }
+
 .image-column {
   width: 62%;
   margin: 8px;
