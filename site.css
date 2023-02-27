@@ -160,7 +160,7 @@ img {
   gap: 4px;
 }
 
-.foliocontainer .row .image-column:first-of-type {
+.foliocontainer .row:first-of-type .image-column {
   width: 80%;
 }
 
@@ -168,7 +168,7 @@ img {
   text-align: center;
   margin:0;
 }
-.foliocontainer .row p:first-of-type {
+.foliocontainer .row:first-of-type p {
   margin-top:20px;
 }
 
