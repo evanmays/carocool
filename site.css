@@ -47,6 +47,7 @@ a:active {color: black;text-decoration: none;}    /* selected link */
   margin: 0;
   padding: 0;
   transform: translate(-50%,-50%);
+  width: 100%;
 }
 
 .header, .footer {
