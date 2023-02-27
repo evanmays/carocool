@@ -6,32 +6,69 @@
   <!-- <meta property="og:description" content="undefined"> -->
   <meta property="og:image" content="https://carolinecoolidge.com/opengraph.png">
   <style>
-    * {font-family: "Times New Roman"}
-    @media only screen and (min-width: 768px) {
-        img {
-          width: 500px; /* Width of image on desktop */
-          margin: 0 auto; /* Center the image horizontally */
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-        }
-      }
-      
-      /* Styles for phone screens */
-      @media only screen and (max-width: 767px) {
-        img {
-          width: 80%; /* Width of image on phone */
-          margin: 0 auto; /* Center the image horizontally */
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-        }
-      }
+* {font-family: "Times New Roman"}
+@media only screen and (min-width: 768px) {
+  img {
+    width: 500px; /* Width of image on desktop */
+    margin: 0 auto; /* Center the image horizontally */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
 
+/* Styles for phone screens */
+@media only screen and (max-width: 767px) {
+  img {
+    width: 80%; /* Width of image on phone */
+    margin: 0 auto; /* Center the image horizontally */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+a:visited {
+  color: rgb(0, 0, 255);;
+}
   </style>
+  <link rel="stylesheet" type="text/css" href="navigation.css">
+  <style>
+.nav {
+  display: none;
+}
+  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
   <img src="video2.gif" alt="Coming soon">
+  <div class="nav">
+    <div class="name">
+      Caroline Coolidge
+    </div>
+    <div class="pages">
+      <div class="hamburger-menu">
+        <div class="bar"></div>
+        <!-- <div class="bar"></div>
+        <div class="bar"></div> -->
+      </div>
+      <ul class="nav-items">
+        <li><a href="works.html">Works</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    if (window.location.search.endsWith("?nowait")) {
+      document.querySelector('.nav').style.display = 'flex';
+    } else {
+      setTimeout(function() {
+        // window.location.href = "secret.html";
+        document.querySelector('.nav').style.display = 'flex';
+      }, 3000);
+    }
+  </script>
+  <script src="navigation.js"></script>
 </body>
