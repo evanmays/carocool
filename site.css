@@ -81,6 +81,12 @@ a:active {color: black;text-decoration: none;}    /* selected link */
   margin-bottom: 400px;
 }
 
+@media (max-width: 799px) {
+  .artcontainer.quarantinecontainer .row:first-of-type {
+    margin-top: 160px;
+  }
+}
+
 .artcontainer.drawingscontainer .row:nth-of-type(2) {
   margin-top: 150px;
   margin-bottom: 150px;
@@ -94,6 +100,12 @@ a:active {color: black;text-decoration: none;}    /* selected link */
 .artcontainer.paintingscontainer .row {
   margin-top: 300px;
   margin-bottom: 300px;
+}
+
+@media (max-width: 799px) {
+  .artcontainer.paintingscontainer .row:first-of-type {
+    margin-top: 160px;
+  }
 }
 
 .artcontainer.metamorphcontainer .row {
@@ -164,6 +176,12 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+}
+
+@media (max-width: 799px) {
+  .foliocontainer .row:first-of-type {
+    margin-top: 120px;
+  }
 }
 
 .foliocontainer .row:first-of-type .image-column {
