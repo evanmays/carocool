@@ -97,3 +97,13 @@ img.close, .container.close {
     display: none;
   }
 } */
+
+#animation {
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+  
+#animation:hover {
+  background-color: #f2f2f2;  /* or any color you prefer */
+  color: #333;  /* or any color you prefer */
+}
