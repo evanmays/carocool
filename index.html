@@ -37,9 +37,10 @@ a:visited {
   color: rgb(0, 0, 255);;
 }
   </style>
+  <link rel="stylesheet" type="text/css" href="site.css">
   <link rel="stylesheet" type="text/css" href="navigation.css">
   <style>
-.nav {
+.nav, .container.middle, .footer {
   display: none;
 }
   </style>
@@ -47,33 +48,87 @@ a:visited {
 </head>
 <body>
   <img id="animation" src="video2.gif" alt="Artistic animation. Closes after 5 minutes or click to skip.">
+  <div class="container middle">
+    <div class="row">
+      <a href="re-de-constructed-language.html">
+        <i>re/de/constructed language</i>, 2022
+      </a>
+    </div>
+    <div class="row">
+      <a href="folios.html">
+        <i>Folios, Stacks</i>, 2022
+      </a>
+    </div>
+    <div class="row">
+      <a href="paintings.html">
+        <i>Unit Paintings</i>, <i>one and twelve</i>, 2022
+      </a>
+    </div>
+    <div class="row">
+      <a href="glitch.html">
+        <i>Glitch</i>, 2021
+      </a>
+    </div>
+    <div class="row">
+      <a href="trytoforget.html">
+        <i>Try to Forget</i>, 2021
+      </a>
+    </div>
+    <div class="row">
+      <a href="untitled-quarantine.html">
+        <i>Untitled (Quarantine Painting)</i>, 2020-2021
+      </a>
+    </div>
+    <div class="row">
+      <a href="untitled-taskrabbit.html">
+        <i>Untitled (TaskRabbit)</i>, 2019
+      </a>
+    </div>
+    <div class="row">
+      <a href="metamorphic-reflections.html">
+        <i>Metamorphic Reflections</i>, 2018
+      </a>
+    </div>
+  </div>
   <div class="nav">
     <div class="name">
-      Caroline Coolidge
+      <i id="nameitalics">Caroline Coolidge</i>
+      <div class="nav-items">
+        <div class="cv-row" style="margin-top: 82px;">
+          <div class="cv-column cv-column-left">&nbsp;</div>
+          <div class="cv-column cv-column-right">
+            b. 1998<br />
+            Lives and works in Oxford, UK<br />
+            Contact: studio@carolinecoolidge.com
+          </div>
+        </div>
+      </div>
     </div>
     <div class="pages">
       <div class="hamburger-menu">
         <div class="bar"></div>
-        <!-- <div class="bar"></div>
-        <div class="bar"></div> -->
+        <div class="bar"></div>
       </div>
-      <ul class="nav-items">
-        <li><a href="works.html">Works</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
     </div>
   </div>
+  <div class="footer">
+    © 2018 – 2023 Caroline Coolidge
+  </div>
   <script>
-    if (window.location.search.endsWith("?nowait")) {
+    const show = () => {
       document.querySelector('.nav').style.display = 'flex';
+      document.querySelector('.container').style.display = 'flex';
+      document.querySelector('.footer').style.display = 'block';
+      document.querySelector('#animation').style.display = 'none';
+    }
+    if (window.location.search.endsWith("?nowait")) {
+      show();
     } else {
       document.querySelector('#animation').addEventListener("click", () => {
-        document.querySelector('.nav').style.display = 'flex';
+        show();
       });
       setTimeout(function() {
-        // window.location.href = "secret.html";
-        document.querySelector('.nav').style.display = 'flex';
+        show();
       }, 3000);
     }
   </script>

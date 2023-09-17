@@ -8,7 +8,11 @@
   top: 0;
   left: 40px;
   right: 40px;
-  z-index: 40;
+}
+
+
+.nav > * {
+  z-index:40
 }
 
 @media (max-width: 799px) {
@@ -19,11 +23,7 @@
   }
 }
 
-.name {
-  font-style: italic;
-}
-
-.hamburger-menu {
+.hamburger-menu.change {
   cursor: pointer;
   padding: 14px 0;
 }
@@ -37,24 +37,44 @@
   transition: all 0.3s ease;
 }
 
+.bar:first-of-type {
+  opacity: 0;
+}
+.bar:nth-of-type(2) {
+  opacity: 0;
+}
+
 .nav-items {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
+  transform: scale(0);
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 82px 420px 0px 420px;
   transition: all 0.3s ease;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  left:0;
+  top:0;
+  box-sizing: border-box;
+  z-index: -1;
+}
+@media (max-width: 1280px) {
+  .nav-items {
+    padding: 82px 160px 0px 160px;
+  }
+}
+@media (max-width: 769px) {
+  .nav-items {
+    padding: 82px 40px 0px 40px;
+  }
 }
 
 .nav-items.open {
-  transform: translate(-50%, -50%) scale(1);
+  transform: scale(1);
 }
-img.close, .container.close {
+img.close, .container.close, .footer.close {
   opacity: 0;
   transition: opacity 0.3s ease-out;
 }
@@ -70,15 +90,13 @@ img.close, .container.close {
 }
 
 .change .bar:nth-of-type(1) {
-  transform: rotate(-45deg); /*  translate(-9px, 6px) */
+  opacity: 1;
+  transform: rotate(-45deg) translate(-5px, 5px);
 }
 
 .change .bar:nth-of-type(2) {
-  opacity: 0;
-}
-
-.change .bar:nth-of-type(3) {
-  transform: rotate(45deg) translate(-8px, -8px);
+  opacity: 1;
+  transform: rotate(45deg) translate(0px, -1px);
 }
 
 
@@ -106,4 +124,49 @@ img.close, .container.close {
 #animation:hover {
   background-color: #f2f2f2;  /* or any color you prefer */
   color: #333;  /* or any color you prefer */
+}
+
+.cv-row {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  margin: 16px 0px;
+  padding: 0;
+  width:100%;
+}
+
+.cv-column {
+  margin: 0;
+  padding: 0;
+  
+}
+
+.cv-column-left {
+  width: 20%;
+  text-align: right;
+  padding-right: 60px;
+}
+@media (max-width: 767px) {
+  .cv-column-left {
+    width: 20%;
+    text-align: left;
+    padding: 0px;
+  }
+}
+.cv-column-right {
+  width: 80%;
+  text-align: left;
+}
+
+.name #nameitalics:hover, a:hover {
+  color: #EE5C35;
+}
+.pages:hover .bar {
+  background-color: #EE5C35;
+}
+
+#nameitalics {
+  line-height: 50px;
+  cursor:pointer
 }

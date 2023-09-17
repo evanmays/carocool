@@ -51,11 +51,22 @@ a:active {color: black;text-decoration: none;}    /* selected link */
   width: 100%;
 }
 
-.header, .footer {
+.header {
   text-align: center;
   width: 100%;
   margin-top:60px;
   margin-bottom:60px;
+}
+
+.footer {
+  text-align: center;
+  padding: 16px 40px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .row {
@@ -286,4 +297,8 @@ img {
 
 .embed-responsive-1by1::before {
   padding-top: 100%;
+}
+
+.name a {
+  line-height: 50px;
 }
