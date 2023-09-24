@@ -62,10 +62,10 @@
 }
 @media (max-width: 1280px) {
   .nav-items {
-    padding: 82px 160px 0px 160px;
+    padding: 20px 160px 100px 160px;
   }
 }
-@media (max-width: 769px) {
+@media (max-width: 767px) {
   .nav-items {
     padding: 82px 40px 120px 40px;
   }
