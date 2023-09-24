@@ -162,6 +162,13 @@ img.close, .container.close, .footer.close {
 .name #nameitalics:hover, a:hover {
   color: #EE5C35;
 }
+/* .carousel-cell div p:hover:nth-child(2) {
+  color: #EE5C35;
+  cursor: pointer
+} */
+.carousel-cell div {
+  max-width: 400px;
+}
 .pages:hover .bar {
   background-color: #EE5C35;
 }
