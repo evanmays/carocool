@@ -13,10 +13,11 @@ hamburgerMenu.addEventListener("click", () => {
     img.classList.remove("close");
     container.classList.remove("close");
     footer.classList.remove("close");
+    window.history.replaceState({cvPopupClosed: true}, '', "/");
   }
 });
 
-nametag.addEventListener("click", () => {
+const forceToggle = () => {
   nametag.classList.toggle("change");
   hamburgerMenu.classList.toggle("change");
   navItems.classList.toggle("open");
@@ -29,4 +30,18 @@ nametag.addEventListener("click", () => {
   if (footer) {
     footer.classList.toggle("close");
   }
+}
+nametag.addEventListener("click", () => {
+  forceToggle();
+  if (hamburgerMenu.classList.contains("change")) {
+    // opening
+    window.history.replaceState({cvPopupOpened: true}, '', "index.html#cv");
+  } else { // closing
+    window.history.replaceState({cvPopupClosed: true}, '', "/");
+  }
 });
+
+
+if (window.location.hash === '#cv') {
+  forceToggle();
+}

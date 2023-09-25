@@ -338,7 +338,7 @@
       document.querySelector('.footer').style.display = 'block';
       document.querySelector('#animation').style.display = 'none';
     }
-    if (window.location.search.endsWith("?nowait")) {
+    if (window.location.search.endsWith("?nowait") || window.location.hash === '#cv') {
       show();
     } else {
       document.querySelector('#animation').addEventListener("click", () => {
