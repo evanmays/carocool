@@ -1,76 +1,91 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <link rel="stylesheet" type="text/css" href="site.css">
     <link rel="stylesheet" type="text/css" href="navigation.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
-      .nav-items {
+      .nav {
         z-index: 20;
       }
+      body {
+        margin: 0;
+        margin: 0 auto !important;
+        padding: 0 !important;
+      }
+      .container {
+        margin: 0 auto !important;
+        padding: 0 !important;
+        max-width: none !important;
+        position: fixed;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+      }
+      @media (min-width: 800px) {
+        .container {
+          padding: 0 62px !important;
+        }
+      }
+            
     </style>
-    <script src="fslightbox.js"></script>
   </head>
   <body>
     <div class="nav">
       <div class="name">
-        <a href="index.html?nowait">Caroline Coolidge</a>
+        <a href="index.html?nowait">caroline coolidge</a>
       </div>
       <div class="pages">
-        <div class="hamburger-menu">
-          <div class="bar"></div>
-          <!-- <div class="bar"></div>
-          <div class="bar"></div> -->
-        </div>
         <ul class="nav-items">
           <li><a href="works.html">Works</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
+        <a href="index.html?nowait">
+          <div class="hamburger-menu change">
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </a>
       </div>
     </div>
-    <div class="container artcontainer taskrabbitcontainer">
-      <!-- <div class="nav">
-        <a href="index.html?nowait">Caroline Coolidge</a>
-      </div>
-      <div class="header">
-        <h1>Caroline Coolidge</h1>
-      </div> -->
-      <div class="row">
-        <div class="image-column">
-          <p>
-            <br /><i>Untitled (TaskRabbit)</i>, 2019
+    <div class="container artcontainer foliocontainer">
+      <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround": true, "accessibility": true, "pageDots": false, "setGallerySize": false, "selectedAttraction": 1, "friction": 1, "arrowShape": "M 15,50 L 65,100 L 70,95 L 25,50 L 70,5 L 65,0 Z"}'>
+        <div class="carousel-cell">
+          <img
+            src="art/taskrabbit/Caroline-Coolidge-TaskRabbit-01.jpg"
+            alt="Screenshot created by the artist, Caroline Coolidge, of their phone, showing a white screen with a receipt with black and green text on the app TaskRabbit for 3:45 hours of work by Christopher M. totaling $135.86."
+            onload="adjustImage(); adjustPositions()"
+          />
+          <div>
+            <p>
+              <i>Untitled (TaskRabbit)</i>, 2019<br />
+              <i>Action Remnant</i><br />
+              <i>Screenshot</i>
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell" style="justify-content: center;">
+          <p id="project-description">
+            Seventeen spherical objects were placed in a circle on the floor of the exhibition space. The objects included a whiskey barrel hoop ring, a flat metal disk, a hubcap, the top of a broken flower pot, a red bowl, and a ring of dirt, to name a few. Seventeen additional objects were placed inside each of the aforementioned objects, thus encircling the additional objects. These included a colorful child’s toy, a gold earring, a single knitting needle, a teapot, a tape dispenser, and photographic slides. All of the objects had aquired a patina, evoking a used quality. The objects held this arrangement for the first three days of the show. This was the first iteration of the work.
           </p>
-          <p>
-            <br />
-            Seventeen spherical objects are placed in a circle on the floor of the exhibition space. The objects include a whiskey barrel hoop ring, a flat metal disk, a hubcap, the top of a broken flower pot, a red bowl, and a ring of dirt, to name a few. Seventeen additional objects are placed inside each of the aforementioned objects, thus encircling the additional objects. These include a colorful child’s toy, a gold earring, a single knitting needle, a tea pot, a tape dispenser, and photographic slides. All of the objects have a patina, evoking a used quality. The objects hold this arrangement for the first three days of the show. This is the first iteration of the work.
+        </div>
+        <div class="carousel-cell" style="justify-content: center;">
+          <p id="project-description">
+            On April 23, 2019, the artist hired Christopher M. through the application TaskRabbit and booked his services for Thursday of that week. Christopher M. arrived at the exhibition space at 2:09pm on April 25, 2019. He promptly began the task that the artist described to him through the TaskRabbit app. After approximately 3 hours and 45 minutes, Christopher M. completed the task. He wrapped all 34 objects in newsprint packing paper and placed each of them, as he saw fit, into the four empty UHAUL boxes. The work was completed slightly before 6:00 pm. Seventeen people, including the artist, were present in the gallery while this act took place.
           </p>
-          <p>
-            <br />
-            On April 23, 2019 the artist hires Christopher M. through the application TaskRabbit and books his services for Thursday. Christopher M. arrives to the exhibition space at 2:09pm on April 25, 2019. He promptly begins the task that the artist described to him through the TaskRabbit app. After approximately 3 hours and 45 minutes Christopher M. completes the task. He has wrapped all 34 objects in newsprint packing paper and placed each of them, as he saw fit, into the four empty UHAUL boxes he obtained at the entrance of the space upon arrival. The work is completed slightly before 6:00pm. Seventeen people, including the artist, are present in the gallery while this act takes place.
-          </p>
-          <p>
-            <br />
-            Once complete, the four UHAUL boxes, now containing all 34 objects are arranged in the center of the exhibition space by Christopher M. Before departing he writes his signature on a folded sheet of newsprint and places it onto the top of one of the boxes. This private, undocumented performance enacted by Christopher M. on April 25, 2019 is the second iteration of the artwork.
-          </p>
-          <p>
-            <br />
-            For the remaining duration of the show the four UHAUL boxes occupy the gallery. A screenshot of the TaskRabbit receipt or action remnant is printed and placed in the exhibition guide, found at the entrance of the space. This is the final installation of the action remnant work. The boxes remain in the space until May 17, 2019 when the show closes.
+        </div>
+        <div class="carousel-cell" style="justify-content: center;">
+          <p id="project-description">
+        Once complete, the four UHAUL boxes, now containing all 34 objects, were arranged in the center of the exhibition space by Christopher M. Before departing he wrote his signature on a folded sheet of newsprint and placed it onto the top of one of the boxes. This private, undocumented performance enacted by Christopher M. on April 25, 2019, was the second iteration of the artwork.<br /><br />
+        For the remaining duration of the show, the four UHAUL boxes occupied the gallery. A screenshot of the TaskRabbit receipt or action remnant was printed and placed in the exhibition guide, found at the entrance of the space. This is the final installation of the action remnant work. The boxes remained in the space until May 17, 2019, when the show closed.
           </p>
         </div>
       </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/taskrabbit/TaskRabbit.jpg" alt="Image">
-          <i>Action Remnant</i>
-        </div>
-      </div>
-
-      
-      
-      <!-- <div class="footer">
-        <p>email goes here</p>
-      </div> -->
+      <script src="imgresize.js"></script>
     </div>
     <script src="navigation.js"></script>
   </body>

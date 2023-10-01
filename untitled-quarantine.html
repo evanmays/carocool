@@ -1,70 +1,113 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <link rel="stylesheet" type="text/css" href="site.css">
     <link rel="stylesheet" type="text/css" href="navigation.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
-      .nav-items {
+      .nav {
         z-index: 20;
       }
+      body {
+        margin: 0;
+        margin: 0 auto !important;
+        padding: 0 !important;
+      }
+      .container {
+        margin: 0 auto !important;
+        padding: 0 !important;
+        max-width: none !important;
+        position: fixed;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+      }
+      @media (min-width: 800px) {
+        .container {
+          padding: 0 62px !important;
+        }
+      }
+            
     </style>
-    <script src="fslightbox.js"></script>
   </head>
   <body>
     <div class="nav">
       <div class="name">
-        <a href="index.html?nowait">Caroline Coolidge</a>
+        <a href="index.html?nowait">caroline coolidge</a>
       </div>
       <div class="pages">
-        <div class="hamburger-menu">
-          <div class="bar"></div>
-          <!-- <div class="bar"></div>
-          <div class="bar"></div> -->
-        </div>
         <ul class="nav-items">
           <li><a href="works.html">Works</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
+        <a href="index.html?nowait">
+          <div class="hamburger-menu change">
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </a>
       </div>
     </div>
-    <div class="container artcontainer quarantinecontainer">
-      <!-- <div class="nav">
-        <a href="index.html?nowait">Caroline Coolidge</a>
-      </div>
-      <div class="header">
-        <h1>Caroline Coolidge</h1>
-      </div> -->
-      <div class="row">
-        <div class="image-column">
-          <img src="art/quarantine/2.jpg" alt="Image">
+    <div class="container artcontainer foliocontainer">
+      <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround": true, "accessibility": true, "pageDots": false, "setGallerySize": false, "selectedAttraction": 1, "friction": 1, "arrowShape": "M 15,50 L 65,100 L 70,95 L 25,50 L 70,5 L 65,0 Z"}'>
+        <div class="carousel-cell">
+          <img
+            src="art/canvas/Caroline-Coolidge-Quarantine-Painting-01.jpg"
+            alt="A photograph of an artwork by artist Caroline Coolidge showing a wooden frame with nothing in it on a white background."
+            onload="adjustImage(); adjustPositions()"
+          />
+          <div>
+            <p>
+              <i>Untitled (Quarantine Painting)</i>, 24 March 2020–29 May 2021<br />
+              Canvas, staples, four wooden stretcher bars, and 24-hour audio loop<br />
+              68 x 68 in.
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/quarantine/1.jpg" alt="Image">
+        <div class="carousel-cell">
+          <img
+            src="art/canvas/Caroline-Coolidge-Quarantine-Painting-02.jpg"
+            alt="On March 24, 2020, the state of Massachusetts went into a state of emergency with a stay-at-home advisory and the closure of all non-essential businesses as a result of the COVID-19 pandemic. Beginning that day, and continuing for over a year, I stretched a canvas in the morning and then unstretched it in the evening as I grappled with what it meant to be making art during this time. All of the staples used were collected in glass jars and sound recordings were made during the process of stretching and unstretching the canvas, as well as a log of what time of day this occurred. This process lasted until May 29, 2021 when the state of Massachusetts lifted all COVID-19 restrictions, allowing industries to reopen. The final work consists of the now tattered canvas, the canvas stretchers, the staples used, and a speaker that plays the recordings of the stretching and unstretching on a 24-hour audio loop."
+            onload="adjustImage(); adjustPositions()"
+          />
+          <div>
+            <p>
+              <i>Untitled (Quarantine Painting)</i>, 24 March 2020–29 May 2021<br />
+              Canvas, staples, four wooden stretcher bars, and 24-hour audio loop<br />
+              68 x 68 in.
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <p>
-            <br /><i>Untitled (Quarantine Painting)</i>, 24 March 2020 to 29 May 2021<br />
-            Canvas, staples, four wooden stretcher bars<br />
-            68 x 68 in.
+        <div class="carousel-cell" style="justify-content: center;">
+          <audio controls>
+            <source src="art/canvas/Caroline-Coolidge-Quarantine-Painting-sound.wav" type="audio/wav">
+            Your browser does not support this audio. It is a clip from the recording of the stretching and unstretching on a 24-hour audio loop. More information on the following slide.
+          </audio>
+          <div>
+            <p>
+              <i>clip from 24-hour audio loop</i>
+            </p>
+          </div>
+          <script>
+            const audioElements = document.querySelectorAll('audio');
+            audioElements.forEach(audio => {
+              audio.addEventListener('pointerdown', function(e) {
+                e.stopPropagation();
+              });
+            });
+          </script>
+        </div>
+        <div class="carousel-cell" style="justify-content: center;">
+          <p id="project-description">
+            On March 24, 2020, the state of Massachusetts went into a state of emergency with a stay-at-home advisory and the closure of all non-essential businesses as a result of the COVID-19 pandemic. Beginning that day, and continuing for over a year, I stretched a canvas in the morning and then unstretched it in the evening as I grappled with what it meant to be making art during this time. All of the staples used were collected in glass jars and sound recordings were made during the process of stretching and unstretching the canvas, as well as a log of what time of day this occurred. This process lasted until May 29, 2021 when the state of Massachusetts lifted all COVID-19 restrictions, allowing industries to reopen. The final work consists of the now tattered canvas, the canvas stretchers, the staples used, and a speaker that plays the recordings of the stretching and unstretching on a 24-hour audio loop.
           </p>
-          <p style="padding: 0 20px">
-            <br />
-            On March 24, 2020 the state of Massachusetts went into a state of emergency with a stay-at-home advisory and the closure of all non-essential businesses as a result of the COVID-19 pandemic. Beginning that day, and continuing for over a year, I stretched a canvas in the morning and then unstretched it in the evening as I grappled with what it meant to be making art during this time. All of the staples used were collected in glass jars and sound recordings were made during the process of stretching and unstretching the canvas, as well as a log of what time of day this occurred. This process lasted until May 29, 2021 when the state of Massachusetts lifted all COVID-19 restrictions, allowing industries to reopen. The final work consists of the now tattered canvas, the canvas stretchers, the staples used, and a speaker that plays the recordings of the stretching and unstretching.
-          </p>
         </div>
       </div>
-
-      
-      
-      <!-- <div class="footer">
-        <p>email goes here</p>
-      </div> -->
+      <script src="imgresize.js"></script>
     </div>
     <script src="navigation.js"></script>
   </body>

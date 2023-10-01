@@ -1,165 +1,206 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <link rel="stylesheet" type="text/css" href="site.css">
     <link rel="stylesheet" type="text/css" href="navigation.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
-      .nav-items {
+      .nav {
         z-index: 20;
       }
+      body {
+        margin: 0;
+        margin: 0 auto !important;
+        padding: 0 !important;
+      }
+      .container {
+        margin: 0 auto !important;
+        padding: 0 !important;
+        max-width: none !important;
+        position: fixed;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+      }
+      @media (min-width: 800px) {
+        .container {
+          padding: 0 62px !important;
+        }
+      }
+            
     </style>
-    <script src="fslightbox.js"></script>
   </head>
   <body>
-    <div class="container artcontainer drawingscontainer">
-      <!-- <div class="nav">
-        <a href="index.html?nowait">Caroline Coolidge</a>
-      </div>
-      <div class="header">
-        <h1>Caroline Coolidge</h1>
-      </div> -->
-      <div class="row">
-        <div class="image-column">
-          <img src="art/re-de-constructed/01.jpg" alt="Image">
-          <br /><br /><i>re/de/constructed language</i>, 2022<br />
-          Documentation of installation at Carpenter Center for Visual Arts, Harvard University, USA.<br /><br /><br />
-          <i>re/de/constructed language</i> explores language and the translation between image and text, written and computer language, and sonic and visual form. Grounded in the scholarship of Ludwig Wittgenstein, Walter Benjamin, and Hito Steyerl, the ephemeral works on paper become instructional inputs for the computer program Kurzweil 3000. The result is a visual and auditory re/de/constructed language which flows from a written mark to a mechanically generated alphabet to digitized sounds informed by both chance and the glitch of the algorithms. The installation oscillates between language and form, between art and communication, and between meaning and translation. This work was exhibited at the Carpenter Center for Visual Arts, Harvard University, spring 2022 and in a solo exhibition at Spoke Gallery, Boston, summer 2022.
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe  style="border: 1px solid rgb(209, 209, 209)" src="https://player.vimeo.com/video/738947500?h=fc99a439bd&autoplay=1&color=ff9933&title=0&byline=0&portrait=0" width="900" height="509" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <p>
-            <br /><i>re/de/constructed (read)</i>, 2022
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/drawings/10-edit.jpg" alt="Image">
-          <p>
-            <i>instructional drawing 1</i>, 2022<br />
-            Graphite, gesso, and watercolor on paper<br />
-            44 x 30 in.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/drawings/09-edit.jpg" alt="Image">
-          <p>
-            <i>instructional drawing 2</i>, 2022<br />
-            Graphite, gesso, and watercolor on paper<br />
-            44 x 30 in.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/drawings/08-edit.jpg" alt="Image">
-          <p>
-            <i>instructional drawing 3</i>, 2022<br />
-            Graphite, gesso, and watercolor on paper<br />
-            44 x 30 in.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/drawings/07-edit.jpg" alt="Image">
-          <p>
-            <i>instructional drawing 4</i>, 2022<br />
-            Graphite, gesso, and watercolor on paper<br />
-            44 x 30 in.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/drawings/06-edit.jpg" alt="Image">
-          <p>
-            <i>instructional drawing 5</i>, 2022<br />
-            Graphite, gesso, and watercolor on paper<br />
-            44 x 30 in.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/drawings/05-edit.jpg" alt="Image">
-          <p>
-            <i>instructional drawing 6</i>, 2022<br />
-            Graphite, gesso, and watercolor on paper<br />
-            44 x 30 in.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/drawings/04-edit.jpg" alt="Image">
-          <p>
-            <i>instructional drawing 7</i>, 2022<br />
-            Graphite, gesso, and watercolor on paper<br />
-            44 x 30 in.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/drawings/03-edit.jpg" alt="Image">
-          <p>
-            <i>instructional drawing 8</i>, 2022<br />
-            Graphite, gesso, and watercolor on paper<br />
-            44 x 30 in.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/drawings/02-edit.jpg" alt="Image">
-          <p>
-            <i>instructional drawing 9</i>, 2022<br />
-            Graphite, gesso, and watercolor on paper<br />
-            44 x 30 in.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="image-column">
-          <img src="art/drawings/01-edit.jpg" alt="Image">
-          <p>
-            <i>instructional drawing 10</i>, 2022<br />
-            Graphite, gesso, and watercolor on paper<br />
-            44 x 30 in.
-          </p>
-        </div>
-      </div>
-
-      
-      
-      <!-- <div class="footer">
-        <p>email goes here</p>
-      </div> -->
-    </div>
     <div class="nav">
       <div class="name">
-        <a href="index.html?nowait">Caroline Coolidge</a>
+        <a href="index.html?nowait">caroline coolidge</a>
       </div>
       <div class="pages">
-        <div class="hamburger-menu">
-          <div class="bar"></div>
-          <!-- <div class="bar"></div>
-          <div class="bar"></div> -->
-        </div>
         <ul class="nav-items">
           <li><a href="works.html">Works</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
+        <a href="index.html?nowait">
+          <div class="hamburger-menu change">
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </a>
       </div>
+    </div>
+    <div class="container artcontainer foliocontainer">
+      <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround": true, "accessibility": true, "pageDots": false, "setGallerySize": false, "selectedAttraction": 1, "friction": 1, "arrowShape": "M 15,50 L 65,100 L 70,95 L 25,50 L 70,5 L 65,0 Z"}'>
+        <div class="carousel-cell">
+          <img
+            src="art/re-de/Caroline-Coolidge-re-de-constructed-language-01.jpg"
+            alt="Photograph of an art installation by artist Caroline Coolidge with a projected screen in the back with abstract black, white, and yellow lines forming the background, and mixed media artworks across two tables and the concrete floor."
+            onload="adjustImage(); adjustPositions()"
+            />
+          <div>
+            <p>
+              <i>re/de/constructed language</i>, 2022<br />
+              Video projection with sound and mixed media<br />
+              <i>Installation view</i>
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img
+            src="art/re-de/Caroline-Coolidge-re-de-constructed-language-02.jpg"
+            alt="A photograph of a detail of an installation by artist Caroline Coolidge showing a projected video, a gray wall, and stacks of bound paper with clips on a tan pedestal."
+            onload="adjustImage(); adjustPositions()"
+            />
+          <div>
+            <p>
+              <i>re/de/constructed language</i>, 2022<br />
+              Video projection with sound and mixed media<br />
+              <i>Installation view</i>
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img
+            src="art/re-de/Caroline-Coolidge-re-de-constructed-language-03.jpg"
+            alt="An abstract horizontal painting by artist Caroline Coolidge in shades of gray-blue reminiscent of tree or flower forms."
+            onload="adjustImage(); adjustPositions()"
+            />
+          <div>
+            <p>
+              <i>instructional drawing 3</i>, 2022<br />
+              Graphite, gesso, and watercolor on paper<br />
+              44 x 30 in.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img
+            src="art/re-de/Caroline-Coolidge-re-de-constructed-language-04.jpg"
+            alt="A black and white video still of an animation by the artist Caroline Coolidge."
+            onload="adjustImage(); adjustPositions()"
+            />
+          <div>
+            <p>
+              <i>re/de/constructed (read)</i>, 2022<br />
+              <i>Video still</i><br />
+              10:18
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img
+            src="art/re-de/Caroline-Coolidge-re-de-constructed-language-05.jpg"
+            alt="A light gray sheet with a very thin, small elongated, vertical black, abstract, pixelated form in the center, created by artist Caroline Coolidge."
+            onload="adjustImage(); adjustPositions()"
+            />
+          <div>
+            <p>
+              <i>manual for instructional drawing 3 (page 39)</i>, 2022<br />
+              Inkjet print on paper<br />
+              8.5 x 11 in.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img
+            src="art/re-de/Caroline-Coolidge-re-de-constructed-language-06.jpg"
+            alt="An abstract vertical painting by artist Caroline Coolidge with delicate lines in shades of pink, orange, blue, and gray creating tree-like imagery."
+            onload="adjustImage(); adjustPositions()"
+            />
+          <div>
+            <p>
+              <i>instructional drawing 7</i>, 2022<br />
+              Graphite, gesso, and watercolor on paper<br />
+              44 x 30 in.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img
+            src="art/re-de/Caroline-Coolidge-re-de-constructed-language-07.jpg"
+            alt="A light gray sheet with nonsense text in a column going down the page, created by artist Caroline Coolidge."
+            onload="adjustImage(); adjustPositions()"
+            />
+          <div>
+            <p>
+              <i>manual for instructional drawing 7 (page 119)</i>, 2022<br />
+              Inkjet print on paper<br />
+              8.5 x 11 in.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img
+            src="art/re-de/Caroline-Coolidge-re-de-constructed-language-08.jpg"
+            alt="An abstract vertical drawing by artist Caroline Coolidge with delicate, curved lines in dark gray on a light gray background."
+            onload="adjustImage(); adjustPositions()"
+            />
+          <div>
+            <p>
+              <i>instructional drawing 9 (scan)</i>, 2022<br />
+              Inkjet print on paper<br />
+              8.5 x 11 in.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img
+            src="art/re-de/Caroline-Coolidge-re-de-constructed-language-09.jpg"
+            alt="A light gray sheet with a large, black, abstract, pixelated form in the center, created by artist Caroline Coolidge."
+            onload="adjustImage(); adjustPositions()"
+            />
+          <div>
+            <p>
+              <i>instructional drawing 9 (manual, page 30)</i>, 2022<br />
+              Inkjet print on paper<br />
+              8.5 x 11 in.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img
+            src="art/re-de/Caroline-Coolidge-re-de-constructed-language-10.jpg"
+            alt="A photograph of a vertical rectangular abstract painting by the artist Caroline Coolidge painted in a textural and layered way with white dominating the top third, blue in the center, and brown in the bottom third."
+            onload="adjustImage(); adjustPositions()"
+            />
+          <div>
+            <p>
+              <i>instructional drawing 10</i>, 2022<br />
+              Graphite, gesso, and watercolor on paper <br />
+              44 x 30 in.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-cell" style="justify-content: center;">
+          <p id="project-description">
+            <i>re/de/constructed language</i>, 2022 explores language and the translation between image and text, written and computer language, and sonic and visual form. Grounded in the scholarship of Ludwig Wittgenstein, Walter Benjamin, and Hito Steyerl, the ephemeral works on paper become instructional inputs for the computer program Kurzweil 3000. The result is a visual and auditory re/de/constructed language which flows from a written mark to a mechanically generated alphabet to digitized sounds informed by both chance and the glitch of the algorithms. The installation oscillates between language and form, between art and communication, and between meaning and translation. This work was shown at the Carpenter Center for Visual Arts, Harvard University, spring 2022 and in a solo exhibition at Spoke Gallery, Boston, summer 2022.
+          </p>
+        </div>
+      </div>
+      <script src="imgresize.js"></script>
     </div>
     <script src="navigation.js"></script>
   </body>
