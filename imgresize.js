@@ -17,8 +17,8 @@ function adjustImage() {
     } else {
       // Portrait viewport
       if (window.matchMedia("(max-width: 799px)").matches) {
-        maxWidth = 'calc(70vw - 50px)';
-        maxHeight = 'calc(70vh - 50px)';
+        maxWidth = 'calc(70vw - 100px)';
+        maxHeight = 'calc(70vh - 100px)';
       } else {
         maxWidth = 'calc(100vw - 50px)';
         maxHeight = 'calc(75vh - 50px)';
