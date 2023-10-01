@@ -151,7 +151,7 @@ img.close, .container.close, .footer.close {
   .cv-column-left {
     width: 20%;
     text-align: left;
-    padding: 0px;
+    padding: 0px 8px 0px 0px;
   }
 }
 .cv-column-right {
