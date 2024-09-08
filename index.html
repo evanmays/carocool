@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caroline Coolidge - Artist</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+
+        body{
+            margin: 0;
+            padding: 20px;
+            font-family: "Times New Roman", Times, serif;
+        }
+        header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .name {
+            font-size: 28px;
+            /* font-weight: bold; */
+            cursor: pointer;
+        }
+        header a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+        a:hover {
+          color: #EE5C35;
+        }
+        .gallery, .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .artwork {
+            margin-bottom: 40px;
+        }
+        .artwork img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+        .artwork p {
+            margin-top: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            overflow: auto;
+        }
+        .lightbox-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .lightbox-image-container {
+            height: calc(100% - 60px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .lightbox-content img {
+            max-height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+        .lightbox-caption {
+            color: black;
+            font-size: 16px;
+            max-width: 90%;
+            text-align: center;
+        }
+        .close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: black;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .about-image {
+            /* max-width: 100%; */
+            max-width: 600px;
+            width: 100%;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            height: auto;
+            margin-bottom: 0px;
+        }
+        .about-image-caption {
+            font-size: 0.95em !important;
+            text-align: center;
+            margin-top: 12px;
+            margin-bottom: 60px;
+        }
+        @media (max-width: 600px) {
+            .name {
+                font-size: 22px;
+            }
+            .menu a {
+                font-size: 16px;
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="name">
+          <a href="#" onclick="showGallery()">caroline coolidge</a>
+        </div>
+        <div class="menu">
+            <a href="#about" onclick="showAbout()">about</a>
+        </div>
+    </header>
+    
+    <div class="gallery" id="gallery">
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-32-Parallel-Memory-(installation).jpg" alt="Photograph of a white gallery wall with a blue abstract painting, by artist Caroline Coolidge, hung vertically in the center right of the composition and an artfully arranged pile of blue and green painted mesh fabrics on the floor, corresponding to the painting." onclick="openLightbox(this, 'Pigment, graphite, ink, and acrylic on screen printing mesh and board<br>Installation view, Project Space, Ruskin School of Art, University of Oxford')">
+            <p>Parallel Memory (installation), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-31-Prototypes.jpg" alt="Photograph showing a closely cropped view of overlapping, bunched up mesh screens on a light-grey floor in four distinct shades of light and dark, blue and green." onclick="openLightbox(this, 'Pigment, graphite, ink, and acrylic on screen printing mesh<br>200 × 250 x 50 cm')">
+            <p>Prototypes, 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-30-Prototypes-(detail).jpg" alt="A detailed photograph of a close up of layers of transparent mesh screens that are primarily dark blue with a light yellow-green section on the top right." onclick="openLightbox(this, 'Pigment, graphite, ink, and acrylic on screen printing mesh<br>Detail')">
+            <p>Prototypes (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-29-Parallel-Memory.jpg" alt="Photograph of a vertical, dark-blue and black sublime abstract painting hung on a white wall." onclick="openLightbox(this, 'Pigment, ink, and acrylic on board<br>59 x 84 cm')">
+            <p>Parallel Memory, 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-28-Parallel-Memory-(detail).jpg" alt="Detail of a monochrome, blue painting showcasing intricate patterns in of very dark and very light blue, creating striking abstract patterning." onclick="openLightbox(this, 'Pigment, ink, and acrylic on board<br>Detail')">
+            <p>Parallel Memory (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-27-Flux.jpg" alt="A large, vertical, green, textural sculpture, standing on a light grey gallery floor with a white wall behind it, made out of a translucent fabric material, shiny in some sections." onclick="openLightbox(this, 'Pigment, ink, and resin on screen printing mesh<br>158 x 76 x 70 cm')">
+            <p>Flux, 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-26-Flux-(detail).jpg" alt="A cropped view of the middle section of a green and grey sculpture, made from treated mesh fabric, with the top and bottom not in view and white walls visible on the left and right sides of it." onclick="openLightbox(this, 'Pigment, ink, and resin on screen printing mesh<br>Detail')">
+            <p>Flux (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-25-Flux-Detail.jpg" alt="A close up detail of a fabric mesh covered in layers of thick green paint with intricate dark grey paint drips on the surface." onclick="openLightbox(this, 'Pigment, ink, and resin on screen printing mesh<br>Detail')">
+            <p>Flux (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-24-Facsimile.jpg" alt="A long, vertical window covered in translucent layers of painted mesh screens, giving the appearance of a glowing impressionist painting, with white gallery walls and an a small section of the concrete floor visible." onclick="openLightbox(this, 'Pigment, graphite, and ink on screen printing mesh over window<br>85 × 220 × 30 cm')">
+            <p>Facsimile (Window Intervention), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-23-Facsimile-(detail).jpg" alt="A detail of a window covered in layers of painted transparent mesh in light dulled shades of blue, yellow, and grey with a smooth white wall filling the right of the image." onclick="openLightbox(this, 'Pigment, graphite, and ink on screen printing mesh over window<br>85 × 220 × 30 cm')">
+            <p>Facsimile (Window Intervention) (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-22-Facsimile-(detail).jpg" alt="A close up of highly textured layers of transparent painted fabric with light shining from behind." onclick="openLightbox(this, 'Pigment, graphite, and ink on screen printing mesh over window<br>85 × 220 × 30 cm')">
+            <p>Facsimile (Window Intervention) (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-21-echoes.jpg" alt="A vertical, translucent, yellow fabric, catching light, cascades from the galleries white-grey ceiling and rests lightly on the room's concrete floor." onclick="openLightbox(this, 'Acrylic on screen printing mesh<br>126 x 305 cm')">
+            <p>echoes, 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-20-echoes-(detail).jpg" alt="A close up detail photograph of a lightly yellow painted translucent cloth with light hitting its folds and creating dynamic shadows." onclick="openLightbox(this, 'Acrylic on screen printing mesh<br>Detail')">
+            <p>echoes (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-19-Setting-Trees.jpg" alt="A horizontal abstract painting with a dark grey base and translucent light tan, pink, and yellow layers obscuring the darker sections bellow." onclick="openLightbox(this, 'Oil, acrylic, and graphite on paper<br>56 x 76 cm')">
+            <p>Setting Trees, 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-18-Setting-Trees-(detail).jpg" alt="A detail of a highly layered abstract painting with grey shapes in the background and light pink and tan marks overlaying the marks below." onclick="openLightbox(this, 'Oil, acrylic, and graphite on paper<br>Detail')">
+            <p>Setting Trees (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-17-Screening-Memory.jpg" alt="A vertical grey painting with lighter, chalky grey in the foreground and subtle strokes that create lines dividing the painting into four equal quadrants." onclick="openLightbox(this, 'Acrylic, graphite, pigment and colored pencil on board<br>59 x 84 cm')">
+            <p>Screening Memory (Toxic Impression I), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-16-Caroline-Coolidge-Artist-Website-17-Screening-Memory-(detail).jpg" alt="A detail of a grey painting with chalky marks that resemble whirling fog or smoke." onclick="openLightbox(this, 'Acrylic, graphite, pigment and colored pencil on board<br>Detail')">
+            <p>Screening Memory (Toxic Impression I) (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-15-Screening-Memory.jpg" alt="An atmospheric, lime green and grey green, vertical, abstract painting with subtle marks primarily drawn at right angles to the painting's edge." onclick="openLightbox(this, 'Acrylic, graphite, pigment and colored pencil on board<br>59 x 84 cm')">
+            <p>Screening Memory (Toxic Impression II), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-14-Screening-Memory-(detail).jpg" alt="A detail of a vibrant but subdued, primarily lime green abstract painting with thin darker lines dancing across the image." onclick="openLightbox(this, 'Acrylic, graphite, pigment and colored pencil on board<br>Detail')">
+            <p>Screening Memory (Toxic Impression II) (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-13-Reflection-in-Smog.jpg" alt="A moody vertical abstract painting on light paper, primarily composed of grey and purple marks in the bottom half of the composition, an orange grey in the top left, and dark red purple in the top right." onclick="openLightbox(this, 'Pigment, graphite, ink, oil, and screen print on paper<br>56 x 38 cm')">
+            <p>Reflection in Smog (of Mirrors and Moss), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-12-Reflection-in-Smog-(detail).jpg" alt="A close up detail of an abstract painting on paper made from sparkly graphite dust and purple brushy marks at the bottom and right edge." onclick="openLightbox(this, 'Pigment, graphite, ink, oil, and screen print on paper<br>Detail')">
+            <p>Reflection in Smog (of Mirrors and Moss) (detail), 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-11-Unfelt-Pressure.jpg" alt="A photograph of a large black and white abstract charcoal drawing installed on an angled wall in between white mettle beans, with two smaller light grey prints on the concrete floor beneath it." onclick="openLightbox(this, 'Graphite dust and mono screen prints on paper and acrylic sheets<br>Installation view, Ruskin School of Art, University of Oxford')">
+            <p>The Unfelt Pressure Between the Body and the Screen, 2024</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-10-Hand-Print-1-and-4.jpg" alt="Hand Print 1 and 4" onclick="openLightbox(this, 'Hand Print 1 and 4')">
+            <p>Hand Print 1 and 4</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-09-Hand-Prints-III.jpg" alt="Hand Prints III" onclick="openLightbox(this, 'Hand Prints III')">
+            <p>Hand Prints III</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-08-Unfelt-Pressure-(detail).jpg" alt="Unfelt Pressure (detail)" onclick="openLightbox(this, 'Unfelt Pressure (detail)')">
+            <p>Unfelt Pressure (detail)</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-07--Unfelt-Pressure-(detail).jpg" alt="Unfelt Pressure (detail)" onclick="openLightbox(this, 'Unfelt Pressure (detail)')">
+            <p>Unfelt Pressure (detail)</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-06--Unfelt-Pressure-(detail).jpg" alt="Unfelt Pressure (detail)" onclick="openLightbox(this, 'Unfelt Pressure (detail)')">
+            <p>Unfelt Pressure (detail)</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-05-Screen-Impressions-VII.jpg" alt="Screen Impressions VII" onclick="openLightbox(this, 'Screen Impressions VII')">
+            <p>Screen Impressions VII</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-04-Screen-Impressions-XII.jpg" alt="Screen Impressions XII" onclick="openLightbox(this, 'Screen Impressions XII')">
+            <p>Screen Impressions XII</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-03-Screen-Impressions-VII.jpg" alt="Screen Impressions VII" onclick="openLightbox(this, 'Screen Impressions VII')">
+            <p>Screen Impressions VII</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-02-Screen-Impressions-IX.jpg" alt="Screen Impressions IX" onclick="openLightbox(this, 'Screen Impressions IX')">
+            <p>Screen Impressions IX</p>
+        </div>
+        <div class="artwork">
+            <img src="art2/Caroline-Coolidge-Artist-Website-01-Screen-Impressions-XIII.jpg" alt="Screen Impressions XIII" onclick="openLightbox(this, 'Screen Impressions XIII')">
+            <p>Screen Impressions XIII</p>
+        </div>
+    </div>
+
+    <div class="about-content" style="display: none;">
+        <img src="caroline-coolidge-artist-studio-portrait.jpg" alt="Caroline Coolidge Portrait" class="about-image">
+        <p class="about-image-caption">Portrait by Deema Alghunaim, 2024.</p>
+        <p>Caroline Coolidge, born 1998, is an interdisciplinary artist and writer based in Edinburgh, Scotland. Coolidge's practice sits between painting, printmaking, sculpture, sound, and experimentation. She is interested in technology, the history of science and tools, the unraveling of language, and the construction of reality and meaning. Coolidge received an MFA with Distinction from the Ruskin School of Art at the University of Oxford in 2024 where her work primarily focused on the <em>screen</em> and the multiplicity of meanings associated with this word. Before beginning her master's degree, Coolidge worked as a teaching fellow in the Art, Film, and Visual Studies department at Harvard University, USA, where she completed her BA with Highest Honors in 2022. Coolidge has exhibited her work in solo and group shows and given public lectures at venues including the Dolphin Gallery at St John's College, University of Oxford, UK, the Spoke Gallery, Boston, USA, and the Carpenter Center for the Visual Arts at Harvard University, Cambridge, USA.</p>
+        &nbsp;
+        <p>Contact: studio@carolinecoolidge.com</p>
+        <p style="margin-bottom:100px"><a href="cv.html">Click for CV</a></p>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <div class="lightbox-image-container">
+                <img id="lightbox-image" src="" alt="Lightbox Image">
+            </div>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(img, description) {
+            $('#lightbox').fadeIn();
+            $('#lightbox-image').attr('src', img.src);
+            $('#lightbox-caption').html(description);
+            $('body').css('overflow', 'hidden');
+        }
+
+        function closeLightbox() {
+            $('#lightbox').fadeOut();
+            $('body').css('overflow', '');
+        }
+
+        function showAbout() {
+            $('#gallery').hide();
+            $('.about-content').show();
+            window.location.hash = "about"
+        }
+
+        function showGallery() {
+            $('.about-content').hide();
+            $('#gallery').show();
+            window.location.hash = ""
+        }
+
+        if (window.location.hash === '#about') {
+          showAbout();
+        } else {
+          showGallery();
+        }
+        $(document).ready(function() {
+            $('.menu a').click(function(e) {
+                e.preventDefault();
+                showAbout();
+            });
+        });
+
+        $(document).keydown(function(e) {
+            if (e.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
