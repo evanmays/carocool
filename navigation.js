@@ -13,7 +13,7 @@ hamburgerMenu.addEventListener("click", () => {
     img.classList.remove("close");
     container.classList.remove("close");
     footer.classList.remove("close");
-    window.history.replaceState({cvPopupClosed: true}, '', "/");
+    window.history.replaceState({cvPopupClosed: true}, '', "secretarchive.html");
   }
 });
 
@@ -35,9 +35,9 @@ nametag.addEventListener("click", () => {
   forceToggle();
   if (hamburgerMenu.classList.contains("change")) {
     // opening
-    window.history.replaceState({cvPopupOpened: true}, '', "index.html#cv");
+    window.history.replaceState({cvPopupOpened: true}, '', "secretarchive.html#cv");
   } else { // closing
-    window.history.replaceState({cvPopupClosed: true}, '', "/");
+    window.history.replaceState({cvPopupClosed: true}, '', "secretarchive.html");
   }
 });
 
