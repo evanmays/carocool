@@ -113,6 +113,33 @@
             cursor: pointer;
             z-index: 1001;
         }
+        .menu {
+            position: relative;
+        }
+        .menu #aboutLink {
+            position: relative;  /* Change to relative positioning */
+            z-index: 2;  /* Ensure the text is above the pseudo-element */
+        }
+        .menu #aboutLink::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            bottom: -10px;
+            left: -10px;
+            z-index: 1;
+        }
+        .menu #aboutLink.change {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .menu .hamburger-menu {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            right: 0;
+        }
         .hamburger-menu {
             padding: 14px 0;
         }
@@ -204,7 +231,11 @@
           <a href="#" onclick="showGallery()">caroline coolidge</a>
         </div>
         <div class="menu">
-            <a href="#about" onclick="showAbout()">about</a>
+            <a href="#about" onclick="showAbout()" id="aboutLink">about</a>
+            <div class="hamburger-menu" onclick="showGallery()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </header>
     <div class="gallery" id="gallery">
@@ -361,33 +392,42 @@
     </div>
 
     <script>
-        const hamburgerMenu = document.querySelector(".hamburger-menu");
+        const lightboxHamburgerMenu = document.querySelector(".lightbox .hamburger-menu");
 
         function openLightbox(img, description) {
             $('#lightbox').fadeIn();
             $('#lightbox-image').attr('src', img.src);
             $('#lightbox-caption').html(description);
             $('body').css('overflow', 'hidden');
-            hamburgerMenu.classList.add("change");
+            lightboxHamburgerMenu.classList.add("change");
         }
 
         function closeLightbox() {
             $('#lightbox').fadeOut();
             $('body').css('overflow', '');
-            if (hamburgerMenu.classList.contains("change")) {
-                hamburgerMenu.classList.remove("change");
+            if (lightboxHamburgerMenu.classList.contains("change")) {
+                lightboxHamburgerMenu.classList.remove("change");
             }
         }
-
+        const aboutHamburgerMenu = document.querySelector(".menu .hamburger-menu");
         function showAbout() {
             $('#gallery').hide();
             $('.about-content').show();
+            
+            document.querySelector("#aboutLink").classList.add("change");
+            aboutHamburgerMenu.classList.add("change");
             window.location.hash = "about"
         }
-
+        
         function showGallery() {
             $('.about-content').hide();
             $('#gallery').show();
+            if (document.querySelector("#aboutLink").classList.contains("change")) {
+                document.querySelector("#aboutLink").classList.remove("change");
+            }
+            if (aboutHamburgerMenu.classList.contains("change")) {
+                aboutHamburgerMenu.classList.remove("change");
+            }
             window.location.hash = ""
         }
 
