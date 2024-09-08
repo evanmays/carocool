@@ -113,8 +113,38 @@
             cursor: pointer;
             z-index: 1001;
         }
-        .close:hover {
-            color: #EE5C35;
+        .hamburger-menu {
+            padding: 14px 0;
+        }
+        .hamburger-menu.change {
+            cursor: pointer;
+        }
+        
+        .bar {
+            width: 35px;
+            /* height: 5px; */
+            height: 2px;
+            margin: 6px 0;
+            background-color: black;
+            transition: all 0.3s ease;
+        }
+        .close:hover .bar {
+            background-color: #EE5C35;
+        }
+
+        .bar:first-of-type {
+            opacity: 0;
+        }
+        .bar:nth-of-type(2) {
+            opacity: 0;
+        }
+        .change .bar:nth-of-type(1) {
+            opacity: 1;
+            transform: rotate(-45deg) translate(-5px, 5px);
+        }
+        .change .bar:nth-of-type(2) {
+            opacity: 1;
+            transform: rotate(45deg) translate(0px, -1px);
         }
         .about-content p {
             font-size: 18px;
@@ -304,7 +334,10 @@
     </div>
 
     <div class="lightbox" id="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="close hamburger-menu" onclick="closeLightbox()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
         <div class="lightbox-content">
             <div class="lightbox-image-container">
                 <img id="lightbox-image" src="" alt="Lightbox Image">
@@ -314,16 +347,22 @@
     </div>
 
     <script>
+        const hamburgerMenu = document.querySelector(".hamburger-menu");
+
         function openLightbox(img, description) {
             $('#lightbox').fadeIn();
             $('#lightbox-image').attr('src', img.src);
             $('#lightbox-caption').html(description);
             $('body').css('overflow', 'hidden');
+            hamburgerMenu.classList.add("change");
         }
 
         function closeLightbox() {
             $('#lightbox').fadeOut();
             $('body').css('overflow', '');
+            if (hamburgerMenu.classList.contains("change")) {
+                hamburgerMenu.classList.remove("change");
+            }
         }
 
         function showAbout() {
