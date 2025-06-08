@@ -24,7 +24,6 @@
         .name {
             font-size: 28px;
             /* font-weight: bold; */
-            cursor: pointer;
             text-align: center;
             margin-top: 10px;
         }
@@ -42,7 +41,16 @@
           text-decoration: none;
         }
         a:hover {
-          color: #EE5C35;
+            color: #EE5C35;
+        }
+        #aboutLink:hover {
+            color: #EE5C35;
+            cursor: pointer;
+        }
+        .name a,
+        .name a:hover {
+            color: inherit;
+            cursor: default;
         }
         .gallery, .about-content {
             max-width: 1000px;
