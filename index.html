@@ -221,6 +221,9 @@
             .about-image-caption {
                 font-size: 0.9em !important;
             }
+            .artwork img {
+                cursor: default;
+            }
         }
     </style>
 </head>
@@ -397,6 +400,9 @@
         const lightboxHamburgerMenu = document.querySelector(".lightbox .hamburger-menu");
 
         function openLightbox(img, description) {
+            if (window.innerWidth <= 600) {
+                return;
+            }
             $('#lightbox').fadeIn();
             $('#lightbox-image').attr('src', img.src);
             $('#lightbox-caption').html(description);
