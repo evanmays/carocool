@@ -438,8 +438,11 @@
             if (window.innerWidth <= 600) {
                 return;
             }
-            $('#lightbox').fadeIn();
-            $('#lightbox-image').attr('src', img.src);
+            const lightboxImage = $('#lightbox-image');
+            lightboxImage.one('load', function() {
+                $('#lightbox').fadeIn();
+            });
+            lightboxImage.attr('src', img.src);
             $('body').css('overflow', 'hidden');
             lightboxHamburgerMenu.classList.add("change");
         }
