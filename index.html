@@ -158,7 +158,12 @@
         }
         .menu .hamburger-menu {
             position: absolute;
-            top: 50%;
+            /*
+             * Place the hamburger/X icon vertically in line with the
+             * artist name below. The menu sits above the name so we
+             * offset the icon slightly downward.
+             */
+            top: calc(50% + 30px);
             transform: translateY(-50%);
             cursor: pointer;
             right: 0;
