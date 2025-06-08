@@ -144,6 +144,9 @@
             opacity: 0;
             pointer-events: none;
         }
+        .menu #aboutLink.change::before {
+            display: none;
+        }
         .menu .hamburger-menu {
             position: absolute;
             top: 50%;
@@ -427,12 +430,7 @@
         } else {
           showGallery();
         }
-        $(document).ready(function() {
-            $('.menu a').click(function(e) {
-                e.preventDefault();
-                showAbout();
-            });
-        });
+
 
         $(document).keydown(function(e) {
             if (e.key === "Escape") {
