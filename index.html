@@ -17,13 +17,20 @@
             margin: 0 auto;
             padding: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            position: relative;
         }
         .name {
             font-size: 28px;
             /* font-weight: bold; */
             cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+        }
+        #aboutLink {
+            font-size: 16px;
+            color: grey;
         }
         header a {
             text-decoration: none;
@@ -114,7 +121,11 @@
             z-index: 1001;
         }
         .menu {
+            width: 100%;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .menu #aboutLink {
             position: relative;  /* Change to relative positioning */
@@ -132,6 +143,9 @@
         .menu #aboutLink.change {
             opacity: 0;
             pointer-events: none;
+        }
+        .menu #aboutLink.change::before {
+            display: none;
         }
         .menu .hamburger-menu {
             position: absolute;
@@ -200,7 +214,7 @@
                 font-size: 20px;
             }
             .menu a {
-                margin-left: 10px;
+                margin-left: 0;
             }
             .gallery, .about-content {
                 padding: 10px;
@@ -226,15 +240,15 @@
 </head>
 <body>
     <header>
-        <div class="name">
-          <a href="#" onclick="showGallery()">caroline coolidge</a>
-        </div>
         <div class="menu">
             <a href="#about" onclick="showAbout()" id="aboutLink">about</a>
             <div class="hamburger-menu" onclick="showGallery()">
                 <div class="bar"></div>
                 <div class="bar"></div>
             </div>
+        </div>
+        <div class="name">
+          <a href="#" onclick="showGallery()">caroline coolidge</a>
         </div>
     </header>
     <div class="gallery" id="gallery">
@@ -438,12 +452,7 @@
         } else {
           showGallery();
         }
-        $(document).ready(function() {
-            $('.menu a').click(function(e) {
-                e.preventDefault();
-                showAbout();
-            });
-        });
+
 
         $(document).keydown(function(e) {
             if (e.key === "Escape") {
