@@ -13,7 +13,7 @@
             font-family: "Times New Roman", Times, serif;
         }
         header {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             display: flex;
@@ -53,7 +53,7 @@
             cursor: default;
         }
         .gallery, .about-content {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -200,13 +200,21 @@
             font-size: 18px;
             line-height: 1.6;
         }
-        .about-image {
-            max-width: 100%;
-            display: block;
+        .about-content {
+            display: flex;
+            gap: 40px;
+        }
+        .about-left, .about-right {
+            flex: 1;
+        }
+        .about-left {
             text-align: center;
-            margin: 0 auto;
+        }
+        .about-image {
+            width: 80%;
             height: auto;
-            margin-bottom: 0px;
+            display: block;
+            margin: 0 auto;
         }
         .about-image-caption {
             font-size: 0.95em !important;
@@ -243,6 +251,17 @@
             }
             .about-image-caption {
                 font-size: 0.9em !important;
+                margin-bottom: 20px;
+            }
+            .about-right p {
+                margin: 0 0 16px 0;
+            }
+            .about-right p:last-child {
+                margin-top: 10px;
+                margin-bottom: 0;
+            }
+            .about-content {
+                flex-direction: column;
             }
             .artwork img {
                 cursor: default;
@@ -359,19 +378,23 @@
         <div class="artwork">
             <img src="art3/Caroline-Coolidge-Artist-Website-01.jpg" alt="A gallery space with an art installation by Caroline Coolidge comprised of a projected image on a screen mounted to the far right wall, a table with stacks of paper on it, abstract paintings on wood and paper stacked on the shiny concrete floor, and a large abstract book form resting on a medium-high table to the back-left of the works on the floor." onclick="openLightbox(this, '<i>re/de/constructed language</i>, 2022<br>Installation view, Carpenter Center for the Visual Arts at Harvard University<br>Cambridge, MA, USA')">
             <p><i>re/de/constructed language</i>, 2022<br>Installation view, Carpenter Center for the Visual Arts at Harvard University<br>Cambridge, MA, USA</p>
-</div>
-
+        </div>
+    </div>
 
     <div class="about-content" style="display: none;">
-        <img src="art3/Caroline-Coolidge-in-her-studio.jpg" alt="Caroline Coolidge in her studio" class="about-image">
-        <p class="about-image-caption">Portrait by Deema Alghunaim, 2024.</p>
-        <p>Caroline Coolidge is driven by investigations of the ephemeral. She explores what occurs at the edge of materials and ideas. Coolidge traces her practice to the blur between painting and printmaking. Her works are remnants of unexpected applications of process and tools, and embody the unraveling that occurs with their creation. Through abstraction, Coolidge creates a sense of disorientation. She forms uncertain memories by considering the history of image creation and reflects upon the breakdown of reality and stability, permeating the present, through her breakdown of the visual past.</p>
+        <div class="about-left">
+            <img src="art3/Caroline-Coolidge-in-her-studio.jpg" alt="Caroline Coolidge in her studio" class="about-image">
+            <p class="about-image-caption">Portrait by Deema Alghunaim, 2024.</p>
+        </div>
+        <div class="about-right">
+            <p>Caroline Coolidge is driven by investigations of the ephemeral. She explores what occurs at the edge of materials and ideas. Coolidge traces her practice to the blur between painting and printmaking. Her works are remnants of unexpected applications of process and tools, and embody the unraveling that occurs with their creation. Through abstraction, Coolidge creates a sense of disorientation. She forms uncertain memories by considering the history of image creation and reflects upon the breakdown of reality and stability, permeating the present, through her breakdown of the visual past.</p>
 
-        <p>Coolidge’s practice is based in Edinburgh, Scotland. Recent solo exhibitions include <i>As Smoke Loses Itself in Air</i>, Patriothall Gallery, Edinburgh, Scotland (forthcoming); <i>Dismantling the Screen</i>, Dolphin Gallery at St John's College, Oxford, England, 2024; and <i>re/de/constructed language</i>, Spoke Gallery, Boston, USA, 2022. </p>
+            <p>Coolidge’s practice is based in Edinburgh, Scotland. Recent solo exhibitions include <i>As Smoke Loses Itself in Air</i>, Patriothall Gallery, Edinburgh, Scotland (forthcoming); <i>Dismantling the Screen</i>, Dolphin Gallery at St John's College, Oxford, England, 2024; and <i>re/de/constructed language</i>, Spoke Gallery, Boston, USA, 2022. </p>
 
-        <p>Coolidge has worked as a teaching fellow in the Art, Film, and Visual Studies department at Harvard University, has been a Curatorial Research Fellow at the MIT List Visual Arts Center, and has held residencies at the Vermont Studio Center and the Salzburg International Summer Academy of Fine Arts. She completed her undergraduate studies at Harvard College in 2022 and earned a Master of Fine Arts with distinction from the Ruskin School of Art, University of Oxford, in 2024.</p>
-        &nbsp;
-        <p>Contact: studio@carolinecoolidge.com</p>
+            <p>Coolidge has worked as a teaching fellow in the Art, Film, and Visual Studies department at Harvard University, has been a Curatorial Research Fellow at the MIT List Visual Arts Center, and has held residencies at the Vermont Studio Center and the Salzburg International Summer Academy of Fine Arts. She completed her undergraduate studies at Harvard College in 2022 and earned a Master of Fine Arts with distinction from the Ruskin School of Art, University of Oxford, in 2024.</p>
+
+            <p>Contact: studio@carolinecoolidge.com</p>
+        </div>
     </div>
 
     <div class="lightbox" id="lightbox">
