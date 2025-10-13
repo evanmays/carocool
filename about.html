@@ -21,25 +21,28 @@
     }
 
     header {
-      padding: 48px 20px 32px;
+      padding: 48px 20px 30px;
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
       justify-items: center;
+      row-gap: 0;
     }
 
     header h1 {
       grid-column: 1 / -1;
+      grid-row: 1;
       font-size: 34px;
       font-weight: 400;
       letter-spacing: 0.04em;
       margin: 0;
-      justify-self: center;
     }
 
     .close-button {
       grid-column: 2;
+      grid-row: 1;
       justify-self: end;
+      align-self: center;
       font-size: 28px;
       line-height: 1;
       text-decoration: none;
@@ -136,6 +139,11 @@
     @media (max-width: 640px) {
       header {
         padding: 40px 16px 28px;
+        row-gap: 0;
+      }
+
+      .close-button {
+        justify-self: end;
       }
 
       main {

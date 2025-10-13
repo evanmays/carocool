@@ -110,12 +110,14 @@
     }
 
     figure.artwork.has-hover:hover .hover-image,
-    figure.artwork.has-hover:focus-within .hover-image {
+    figure.artwork.has-hover:focus-within .hover-image,
+    figure.artwork.has-hover.is-pressing .hover-image {
       opacity: 1;
     }
 
     figure.artwork.has-hover:hover .base-image,
-    figure.artwork.has-hover:focus-within .base-image {
+    figure.artwork.has-hover:focus-within .base-image,
+    figure.artwork.has-hover.is-pressing .base-image {
       opacity: 0;
     }
 
@@ -303,9 +305,70 @@
       window.location.assign(target);
     }
 
+    const TOUCH_LONG_PRESS_DELAY = 350;
+    const touchPressState = new WeakMap();
+    const suppressClickAfterLongPress = new WeakSet();
+
+    function clearTouchPressState(figure) {
+      const state = touchPressState.get(figure);
+      if (!state) {
+        return null;
+      }
+
+      window.clearTimeout(state.timeoutId);
+      touchPressState.delete(figure);
+      return state;
+    }
+
+    function handleTouchPointerDown(event) {
+      if (event.pointerType !== 'touch') return;
+
+      const figure = event.currentTarget;
+      if (!figure.classList.contains('has-hover')) return;
+
+      clearTouchPressState(figure);
+
+      const state = {
+        triggered: false,
+        timeoutId: window.setTimeout(() => {
+          state.triggered = true;
+          figure.classList.add('is-pressing');
+        }, TOUCH_LONG_PRESS_DELAY)
+      };
+
+      touchPressState.set(figure, state);
+    }
+
+    function handleTouchPointerEnd(event) {
+      if (event.pointerType !== 'touch') return;
+
+      const figure = event.currentTarget;
+      const state = clearTouchPressState(figure);
+
+      if (figure.classList.contains('is-pressing')) {
+        figure.classList.remove('is-pressing');
+      }
+
+      if (state && state.triggered) {
+        suppressClickAfterLongPress.add(figure);
+        window.setTimeout(() => suppressClickAfterLongPress.delete(figure), 0);
+      }
+    }
+
     document.querySelectorAll('figure.artwork[data-group]').forEach((figure) => {
       const groupId = figure.dataset.group;
+
+      figure.addEventListener('pointerdown', handleTouchPointerDown);
+      figure.addEventListener('pointerup', handleTouchPointerEnd);
+      figure.addEventListener('pointercancel', handleTouchPointerEnd);
+      figure.addEventListener('pointerleave', handleTouchPointerEnd);
+
       figure.addEventListener('click', () => {
+        if (suppressClickAfterLongPress.has(figure)) {
+          suppressClickAfterLongPress.delete(figure);
+          return;
+        }
+
         navigateToGroup(groupId);
       });
 
