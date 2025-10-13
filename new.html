@@ -78,12 +78,10 @@
       aspect-ratio: 4 / 3;
       overflow: hidden;
       background: #f3f3f3;
-    }
-
-    figure.artwork.has-hover {
       cursor: pointer;
     }
 
+    figure.artwork:focus,
     figure.artwork:focus-within {
       outline: 2px solid #222222;
       outline-offset: 4px;
@@ -143,7 +141,7 @@
   <main>
     <section class="gallery-grid" aria-label="Artwork gallery">
       <!-- Caroline-Coolidge-Artist-Website-01 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-01" aria-label="View Work 01">
         <div class="image-stack">
           <picture>
             <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-01-C.jpg">
@@ -153,7 +151,7 @@
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-02 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-02" aria-label="View Work 02">
         <div class="image-stack">
           <picture>
             <source media="(max-width: 500px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-02-E.jpg">
@@ -165,7 +163,7 @@
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-03 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-03" aria-label="View Work 03">
         <div class="image-stack">
           <picture>
             <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-03-C.jpg">
@@ -175,7 +173,7 @@
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-04 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-04" aria-label="View Work 04">
         <div class="image-stack">
           <picture>
             <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-04-C.jpg">
@@ -185,14 +183,14 @@
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-05 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-05" aria-label="View Work 05">
         <div class="image-stack">
           <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-05-A.jpg" alt="Work 05" loading="lazy">
           <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-05-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-06 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-06" aria-label="View Work 06">
         <div class="image-stack">
           <picture>
             <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-06-C.jpg">
@@ -202,7 +200,7 @@
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-07 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-07" aria-label="View Work 07">
         <div class="image-stack">
           <picture>
             <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-07-C.jpg">
@@ -212,7 +210,7 @@
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-08 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-08" aria-label="View Work 08">
         <div class="image-stack">
           <picture>
             <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-08-C.jpg">
@@ -222,21 +220,21 @@
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-09 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-09" aria-label="View Work 09">
         <div class="image-stack">
           <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-09-A.jpg" alt="Work 09" loading="lazy">
           <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-09-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-10 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-10" aria-label="View Work 10">
         <div class="image-stack">
           <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-10-A.jpg" alt="Work 10" loading="lazy">
           <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-10-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-11 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-11" aria-label="View Work 11">
         <div class="image-stack">
           <picture>
             <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-11-C.jpg">
@@ -246,28 +244,28 @@
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-12 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-12" aria-label="View Work 12">
         <div class="image-stack">
           <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-12-A.jpg" data-fallback="artoct13/Caroline-Coolidge-Artist-Website-12-B.jpg" alt="Work 12" loading="lazy">
           <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-12-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-13 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-13" aria-label="View Work 13">
         <div class="image-stack">
           <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-13-A.jpg" alt="Work 13" loading="lazy">
           <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-13-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-14 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-14" aria-label="View Work 14">
         <div class="image-stack">
           <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-14-A.jpg" alt="Work 14" loading="lazy">
           <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-14-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-15 -->
-      <figure class="artwork has-hover" tabindex="0">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-15" aria-label="View Work 15">
         <div class="image-stack">
           <picture>
             <source media="(max-width: 500px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-15-D.jpg">
@@ -312,6 +310,27 @@
       if (img.complete && img.naturalWidth === 0) {
         handleHoverError();
       }
+    });
+
+    function navigateToGroup(groupId) {
+      if (!groupId) return;
+      const url = new URL('work.html', window.location.href);
+      url.searchParams.set('group', groupId);
+      window.location.href = url.toString();
+    }
+
+    document.querySelectorAll('figure.artwork[data-group]').forEach((figure) => {
+      const groupId = figure.dataset.group;
+      figure.addEventListener('click', () => {
+        navigateToGroup(groupId);
+      });
+
+      figure.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          navigateToGroup(groupId);
+        }
+      });
     });
   </script>
 </body>

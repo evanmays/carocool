@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caroline Coolidge – Work</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      color: #0f0f0f;
+      background-color: #ffffff;
+    }
+
+    header {
+      text-align: center;
+      padding: 48px 20px 24px;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 34px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      margin: 0;
+    }
+
+    .work-subtitle {
+      margin: 12px 0 0;
+      font-size: 18px;
+      color: #555555;
+      font-style: italic;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 28px;
+      right: 24px;
+      font-size: 28px;
+      line-height: 1;
+      text-decoration: none;
+      color: #0f0f0f;
+      padding: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: #6f6f6f;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto 120px;
+      padding: 0 20px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .detail-image {
+      margin: 0;
+    }
+
+    .detail-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #f3f3f3;
+    }
+
+    .missing-message {
+      text-align: center;
+      margin: 120px 0;
+      font-size: 20px;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding-top: 32px;
+      }
+
+      .close-button {
+        top: 16px;
+        right: 16px;
+      }
+
+      main {
+        gap: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="new.html" class="close-button" aria-label="Close and return to gallery">&times;</a>
+    <h1>Caroline Coolidge</h1>
+    <p class="work-subtitle" data-work-subtitle hidden></p>
+  </header>
+  <main data-detail-container>
+    <p class="missing-message" data-missing-message hidden>Artwork not found. <a href="new.html">Return to the gallery</a>.</p>
+  </main>
+  <script>
+    const WORKS = {
+      "Caroline-Coolidge-Artist-Website-01": {
+        title: "Work 01",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-01-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-01-B.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-01-C.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-02": {
+        title: "Work 02",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-02-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-02-B.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-02-C.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-02-D.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-02-E.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-03": {
+        title: "Work 03",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-03-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-03-B.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-03-C.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-04": {
+        title: "Work 04",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-04-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-04-B.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-04-C.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-05": {
+        title: "Work 05",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-05-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-05-B.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-06": {
+        title: "Work 06",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-06-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-06-B.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-06-C.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-06-D.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-06-E.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-07": {
+        title: "Work 07",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-07-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-07-B.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-07-C.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-08": {
+        title: "Work 08",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-08-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-08-B.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-08-C.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-09": {
+        title: "Work 09",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-09-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-09-B.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-10": {
+        title: "Work 10",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-10-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-10-B.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-11": {
+        title: "Work 11",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-11-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-11-B.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-11-C.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-12": {
+        title: "Work 12",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-12-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-12-B.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-13": {
+        title: "Work 13",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-13-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-13-B.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-14": {
+        title: "Work 14",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-14-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-14-B.jpg"
+        ]
+      },
+      "Caroline-Coolidge-Artist-Website-15": {
+        title: "Work 15",
+        images: [
+          "artoct13/Caroline-Coolidge-Artist-Website-15-A.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-15-B.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-15-C.jpg",
+          "artoct13/Caroline-Coolidge-Artist-Website-15-D.jpg"
+        ]
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const groupId = params.get('group');
+    const detailContainer = document.querySelector('[data-detail-container]');
+    const subtitleEl = document.querySelector('[data-work-subtitle]');
+    const missingMessage = document.querySelector('[data-missing-message]');
+
+    if (!groupId || !WORKS[groupId]) {
+      missingMessage.hidden = false;
+      return;
+    }
+
+    const work = WORKS[groupId];
+    document.title = `Caroline Coolidge – ${work.title}`;
+    subtitleEl.textContent = work.title;
+    subtitleEl.hidden = false;
+
+    const fragment = document.createDocumentFragment();
+    work.images.forEach((src) => {
+      const figure = document.createElement('figure');
+      figure.className = 'detail-image';
+
+      const image = document.createElement('img');
+      image.src = src;
+      const variantMatch = src.match(/-([A-Z])\.jpg$/);
+      const variantLabel = variantMatch ? variantMatch[1] : '';
+      image.alt = `${work.title}${variantLabel ? ` – Variation ${variantLabel}` : ''}`;
+      image.loading = 'lazy';
+
+      figure.appendChild(image);
+      fragment.appendChild(figure);
+    });
+
+    detailContainer.appendChild(fragment);
+  </script>
+</body>
+</html>
