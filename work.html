@@ -286,30 +286,29 @@
 
     if (!groupId || !WORKS[groupId]) {
       missingMessage.hidden = false;
-      return;
+    } else {
+      const work = WORKS[groupId];
+      document.title = `Caroline Coolidge – ${work.title}`;
+      subtitleEl.textContent = work.title;
+      subtitleEl.hidden = false;
+
+      const fragment = document.createDocumentFragment();
+      work.images.forEach((src) => {
+        const figure = document.createElement('figure');
+        figure.className = 'detail-image';
+
+        const image = document.createElement('img');
+        image.src = src;
+        const fileKey = src.split('/').pop()?.replace(/\.jpg$/i, '') ?? '';
+        image.alt = ALT_TEXT[fileKey] || work.title;
+        image.loading = 'lazy';
+
+        figure.appendChild(image);
+        fragment.appendChild(figure);
+      });
+
+      detailContainer.appendChild(fragment);
     }
-
-    const work = WORKS[groupId];
-    document.title = `Caroline Coolidge – ${work.title}`;
-    subtitleEl.textContent = work.title;
-    subtitleEl.hidden = false;
-
-    const fragment = document.createDocumentFragment();
-    work.images.forEach((src) => {
-      const figure = document.createElement('figure');
-      figure.className = 'detail-image';
-
-      const image = document.createElement('img');
-      image.src = src;
-      const fileKey = src.split('/').pop()?.replace(/\.jpg$/i, '') ?? '';
-      image.alt = ALT_TEXT[fileKey] || work.title;
-      image.loading = 'lazy';
-
-      figure.appendChild(image);
-      fragment.appendChild(figure);
-    });
-
-    detailContainer.appendChild(fragment);
   </script>
 </body>
 </html>
