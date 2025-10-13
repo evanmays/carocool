@@ -37,7 +37,6 @@
       margin: 32px 0 0;
       font-size: 18px;
       color: #555555;
-      font-style: italic;
     }
 
     .close-button {
@@ -178,7 +177,6 @@
     const WORKS = {
       "Caroline-Coolidge-Artist-Website-01": {
         title: "re/de/constructed language, 2022",
-        subtitleHTML: "<em>re/de/constructed language</em>, 2022",
         details: [
           "Carpenter Center for the Visual Arts at Harvard University",
           "Cambridge, Massachusetts, USA"
@@ -191,7 +189,6 @@
       },
       "Caroline-Coolidge-Artist-Website-02": {
         title: "The Unfelt Pressure Between the Body and the Screen, 2023",
-        subtitleHTML: "<em>The Unfelt Pressure Between the Body and the Screen</em>, 2023",
         details: [
           "Ruskin School of Art Project Space, University of Oxford",
           "Oxford, England, UK"
@@ -206,7 +203,6 @@
       },
       "Caroline-Coolidge-Artist-Website-03": {
         title: "Reflection in Smog (of Mirrors and Moss), 2024",
-        subtitleHTML: "<em>Reflection in Smog (of Mirrors and Moss)</em>, 2024",
         details: [
           "Pigment, graphite, ink, oil, and screen print on paper",
           "22 x 15 in"
@@ -219,7 +215,6 @@
       },
       "Caroline-Coolidge-Artist-Website-04": {
         title: "Flux, 2024",
-        subtitleHTML: "<em>Flux</em>, 2024",
         details: [
           "Pigment, ink, and resin on screen-printing mesh",
           "65 x 32 x 28 in"
@@ -232,7 +227,6 @@
       },
       "Caroline-Coolidge-Artist-Website-05": {
         title: "Screening Memory (Toxic Impression II), 2024",
-        subtitleHTML: "<em>Screening Memory (Toxic Impression II)</em>, 2024",
         details: [
           "Acrylic, graphite, pigment, and colored pencil on board",
           "33 x 23 in"
@@ -244,7 +238,6 @@
       },
       "Caroline-Coolidge-Artist-Website-06": {
         title: "Prototypes, 2024",
-        subtitleHTML: "<em>Prototypes</em>, 2024",
         details: [
           "Ruskin School of Art Degree Exhibition, University of Oxford",
           "Oxford, England, UK"
@@ -259,7 +252,6 @@
       },
       "Caroline-Coolidge-Artist-Website-07": {
         title: "Facsimile (Window Intervention), 2024",
-        subtitleHTML: "<em>Facsimile (Window Intervention)</em>, 2024",
         details: [
           "Pigment, graphite, and ink on screen-printing mesh installed over window",
           "87 x 33 × 12 in"
@@ -272,7 +264,6 @@
       },
       "Caroline-Coolidge-Artist-Website-08": {
         title: "echoes, 2024",
-        subtitleHTML: "<em>echoes</em>, 2024",
         details: [
           "Acrylic ink and pigment on screen-printing mesh",
           "120 x 50 in"
@@ -285,7 +276,6 @@
       },
       "Caroline-Coolidge-Artist-Website-09": {
         title: "Setting Trees, 2024",
-        subtitleHTML: "<em>Setting Trees</em>, 2024",
         details: [
           "Oil, acrylic, and graphite on paper",
           "22 x 30 in"
@@ -297,7 +287,6 @@
       },
       "Caroline-Coolidge-Artist-Website-10": {
         title: "Earth Spill, 2025",
-        subtitleHTML: "<em>Earth Spill</em>, 2025",
         details: [
           "Oil on canvas",
           "40 x 30 in"
@@ -309,7 +298,6 @@
       },
       "Caroline-Coolidge-Artist-Website-11": {
         title: "Ghost Print II, 2025",
-        subtitleHTML: "<em>Ghost Print II</em>, 2025",
         details: [
           "Monofilament polyester screen-printing mesh, acrylic screen-printing paste, powdered pigment, and graphite powder on canvas",
           "48 x 48 in"
@@ -322,7 +310,6 @@
       },
       "Caroline-Coolidge-Artist-Website-12": {
         title: "Esophageal Petals, 2025",
-        subtitleHTML: "<em>Esophageal Petals</em>, 2025",
         details: [
           "As Smoke Loses Itself in Air, Patriothall Gallery",
           "Edinburgh, Scotland"
@@ -334,7 +321,6 @@
       },
       "Caroline-Coolidge-Artist-Website-13": {
         title: "Machine Breath, 2025",
-        subtitleHTML: "<em>Machine Breath</em>, 2025",
         details: [
           "Oil on canvas",
           "30 x 40 in"
@@ -346,7 +332,6 @@
       },
       "Caroline-Coolidge-Artist-Website-14": {
         title: "Fold, 2025",
-        subtitleHTML: "<em>Fold</em>, 2025",
         details: [
           "As Smoke Loses Itself in Air, Patriothall Gallery",
           "Edinburgh, Scotland"
@@ -358,7 +343,6 @@
       },
       "Caroline-Coolidge-Artist-Website-15": {
         title: "Still Life, 2025",
-        subtitleHTML: "<em>Still Life</em>, 2025",
         details: [
           "As Smoke Loses Itself in Air, Patriothall Gallery",
           "Edinburgh, Scotland"
@@ -378,12 +362,50 @@
     const subtitleEl = document.querySelector('[data-work-subtitle]');
     const missingMessage = document.querySelector('[data-missing-message]');
 
+    const escapeHTML = (value) =>
+      String(value).replace(/[&<>"']/g, (char) => (
+        {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        }[char] || char
+      ));
+
+    const formatSubtitle = (title) => {
+      if (typeof title !== 'string') {
+        if (title == null) {
+          return '';
+        }
+
+        return `<em>${escapeHTML(String(title))}</em>`;
+      }
+
+      const trimmed = title.trim();
+
+      if (!trimmed) {
+        return '';
+      }
+
+      const match = trimmed.match(/^(.*?)(,\s*\d{4}(?:\s*[–-]\s*\d{4})?)$/);
+
+      if (match) {
+        const [, textPart, yearPart] = match;
+        const safeText = escapeHTML(textPart.trim());
+        const safeYear = yearPart ? escapeHTML(yearPart) : '';
+        return `${safeText ? `<em>${safeText}</em>` : ''}${safeYear}`;
+      }
+
+      return `<em>${escapeHTML(trimmed)}</em>`;
+    };
+
     if (!groupId || !WORKS[groupId]) {
       missingMessage.hidden = false;
     } else {
       const work = WORKS[groupId];
       document.title = `Caroline Coolidge – ${work.title}`;
-      subtitleEl.innerHTML = work.subtitleHTML || work.title;
+      subtitleEl.innerHTML = formatSubtitle(work.title);
       subtitleEl.hidden = false;
 
       const fragment = document.createDocumentFragment();
