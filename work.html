@@ -67,14 +67,32 @@
     }
 
     .detail-image {
-      margin: 0;
+      margin: 0 0 32px;
+      display: flex;
+      justify-content: center;
     }
 
     .detail-image img {
-      width: 100%;
+      width: min(94%, 860px);
       height: auto;
       display: block;
       background: #f3f3f3;
+    }
+
+    .work-details {
+      margin: 16px auto 0;
+      max-width: min(94%, 860px);
+      font-size: 17px;
+      line-height: 1.6;
+      color: #2f2f2f;
+    }
+
+    .work-details p {
+      margin: 0;
+    }
+
+    .work-details p + p {
+      margin-top: 8px;
     }
 
     .missing-message {
@@ -158,7 +176,12 @@
 
     const WORKS = {
       "Caroline-Coolidge-Artist-Website-01": {
-        title: "Work 01",
+        title: "re/de/constructed language, 2022",
+        subtitleHTML: "<em>re/de/constructed language</em>, 2022",
+        details: [
+          "Carpenter Center for the Visual Arts at Harvard University",
+          "Cambridge, Massachusetts, USA"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-01-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-01-B.jpg",
@@ -166,7 +189,12 @@
         ]
       },
       "Caroline-Coolidge-Artist-Website-02": {
-        title: "Work 02",
+        title: "The Unfelt Pressure Between the Body and the Screen, 2023",
+        subtitleHTML: "<em>The Unfelt Pressure Between the Body and the Screen</em>, 2023",
+        details: [
+          "Ruskin School of Art Project Space, University of Oxford",
+          "Oxford, England, UK"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-02-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-02-B.jpg",
@@ -176,7 +204,12 @@
         ]
       },
       "Caroline-Coolidge-Artist-Website-03": {
-        title: "Work 03",
+        title: "Reflection in Smog (of Mirrors and Moss), 2024",
+        subtitleHTML: "<em>Reflection in Smog (of Mirrors and Moss)</em>, 2024",
+        details: [
+          "Pigment, graphite, ink, oil, and screen print on paper",
+          "22 x 15 in"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-03-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-03-B.jpg",
@@ -184,7 +217,12 @@
         ]
       },
       "Caroline-Coolidge-Artist-Website-04": {
-        title: "Work 04",
+        title: "Flux, 2024",
+        subtitleHTML: "<em>Flux</em>, 2024",
+        details: [
+          "Pigment, ink, and resin on screen-printing mesh",
+          "65 x 32 x 28 in"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-04-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-04-B.jpg",
@@ -192,14 +230,24 @@
         ]
       },
       "Caroline-Coolidge-Artist-Website-05": {
-        title: "Work 05",
+        title: "Screening Memory (Toxic Impression II), 2024",
+        subtitleHTML: "<em>Screening Memory (Toxic Impression II)</em>, 2024",
+        details: [
+          "Acrylic, graphite, pigment, and colored pencil on board",
+          "33 x 23 in"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-05-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-05-B.jpg"
         ]
       },
       "Caroline-Coolidge-Artist-Website-06": {
-        title: "Work 06",
+        title: "Prototypes, 2024",
+        subtitleHTML: "<em>Prototypes</em>, 2024",
+        details: [
+          "Ruskin School of Art Degree Exhibition, University of Oxford",
+          "Oxford, England, UK"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-06-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-06-B.jpg",
@@ -209,7 +257,12 @@
         ]
       },
       "Caroline-Coolidge-Artist-Website-07": {
-        title: "Work 07",
+        title: "Facsimile (Window Intervention), 2024",
+        subtitleHTML: "<em>Facsimile (Window Intervention)</em>, 2024",
+        details: [
+          "Pigment, graphite, and ink on screen-printing mesh installed over window",
+          "87 x 33 × 12 in"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-07-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-07-B.jpg",
@@ -217,7 +270,12 @@
         ]
       },
       "Caroline-Coolidge-Artist-Website-08": {
-        title: "Work 08",
+        title: "echoes, 2024",
+        subtitleHTML: "<em>echoes</em>, 2024",
+        details: [
+          "Acrylic ink and pigment on screen-printing mesh",
+          "120 x 50 in"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-08-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-08-B.jpg",
@@ -225,21 +283,36 @@
         ]
       },
       "Caroline-Coolidge-Artist-Website-09": {
-        title: "Work 09",
+        title: "Setting Trees, 2024",
+        subtitleHTML: "<em>Setting Trees</em>, 2024",
+        details: [
+          "Oil, acrylic, and graphite on paper",
+          "22 x 30 in"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-09-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-09-B.jpg"
         ]
       },
       "Caroline-Coolidge-Artist-Website-10": {
-        title: "Work 10",
+        title: "Earth Spill, 2025",
+        subtitleHTML: "<em>Earth Spill</em>, 2025",
+        details: [
+          "Oil on canvas",
+          "40 x 30 in"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-10-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-10-B.jpg"
         ]
       },
       "Caroline-Coolidge-Artist-Website-11": {
-        title: "Work 11",
+        title: "Ghost Print II, 2025",
+        subtitleHTML: "<em>Ghost Print II</em>, 2025",
+        details: [
+          "Monofilament polyester screen-printing mesh, acrylic screen-printing paste, powdered pigment, and graphite powder on canvas",
+          "48 x 48 in"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-11-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-11-B.jpg",
@@ -247,28 +320,48 @@
         ]
       },
       "Caroline-Coolidge-Artist-Website-12": {
-        title: "Work 12",
+        title: "Esophageal Petals, 2025",
+        subtitleHTML: "<em>Esophageal Petals</em>, 2025",
+        details: [
+          "As Smoke Loses Itself in Air, Patriothall Gallery",
+          "Edinburgh, Scotland"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-12-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-12-B.jpg"
         ]
       },
       "Caroline-Coolidge-Artist-Website-13": {
-        title: "Work 13",
+        title: "Machine Breath, 2025",
+        subtitleHTML: "<em>Machine Breath</em>, 2025",
+        details: [
+          "Oil on canvas",
+          "30 x 40 in"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-13-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-13-B.jpg"
         ]
       },
       "Caroline-Coolidge-Artist-Website-14": {
-        title: "Work 14",
+        title: "Fold, 2025",
+        subtitleHTML: "<em>Fold</em>, 2025",
+        details: [
+          "As Smoke Loses Itself in Air, Patriothall Gallery",
+          "Edinburgh, Scotland"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-14-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-14-B.jpg"
         ]
       },
       "Caroline-Coolidge-Artist-Website-15": {
-        title: "Work 15",
+        title: "Still Life, 2025",
+        subtitleHTML: "<em>Still Life</em>, 2025",
+        details: [
+          "As Smoke Loses Itself in Air, Patriothall Gallery",
+          "Edinburgh, Scotland"
+        ],
         images: [
           "artoct13/Caroline-Coolidge-Artist-Website-15-A.jpg",
           "artoct13/Caroline-Coolidge-Artist-Website-15-B.jpg",
@@ -289,7 +382,7 @@
     } else {
       const work = WORKS[groupId];
       document.title = `Caroline Coolidge – ${work.title}`;
-      subtitleEl.textContent = work.title;
+      subtitleEl.innerHTML = work.subtitleHTML || work.title;
       subtitleEl.hidden = false;
 
       const fragment = document.createDocumentFragment();
@@ -308,6 +401,19 @@
       });
 
       detailContainer.appendChild(fragment);
+
+      if (Array.isArray(work.details) && work.details.length) {
+        const detailsWrapper = document.createElement('section');
+        detailsWrapper.className = 'work-details';
+
+        work.details.forEach((detailLine) => {
+          const p = document.createElement('p');
+          p.innerHTML = detailLine;
+          detailsWrapper.appendChild(p);
+        });
+
+        detailContainer.appendChild(detailsWrapper);
+      }
     }
   </script>
 </body>
