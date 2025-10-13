@@ -9,23 +9,26 @@
 
         body{
             margin: 0;
-            padding: 20px;
+            padding: 0 20px 20px;
             font-family: "Times New Roman", Times, serif;
         }
         header {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 48px 20px 32px;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
+            text-align: center;
+            color: #0f0f0f;
         }
         .name {
-            font-size: 28px;
-            /* font-weight: bold; */
-            text-align: center;
-            margin-top: 16px;
+            font-size: 34px;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            margin: 0;
+            order: 1;
         }
         #aboutLink {
             font-size: 16px;
@@ -146,6 +149,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-top: 12px;
+            order: 2;
         }
         .menu #aboutLink {
             position: relative;  /* Change to relative positioning */
