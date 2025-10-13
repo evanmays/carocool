@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caroline Coolidge – New Gallery Layout</title>
+  <title>Caroline Coolidge</title>
   <style>
     :root {
       color-scheme: light;
@@ -75,7 +75,7 @@
     figure.artwork {
       margin: 0;
       position: relative;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       background: #f3f3f3;
     }
@@ -137,7 +137,7 @@
   <header>
     <h1>Caroline Coolidge</h1>
     <nav aria-label="Main navigation">
-      <a href="about.html">About</a>
+      <a href="index.html#about">About</a>
     </nav>
   </header>
   <main>
@@ -246,15 +246,17 @@
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-12 -->
-      <figure class="artwork" tabindex="0">
+      <figure class="artwork has-hover" tabindex="0">
         <div class="image-stack">
-          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-12-B.jpg" alt="Work 12" loading="lazy">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-12-A.jpg" data-fallback="artoct13/Caroline-Coolidge-Artist-Website-12-B.jpg" alt="Work 12" loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-12-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-13 -->
-      <figure class="artwork" tabindex="0">
+      <figure class="artwork has-hover" tabindex="0">
         <div class="image-stack">
           <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-13-A.jpg" alt="Work 13" loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-13-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
       </figure>
       <!-- Caroline-Coolidge-Artist-Website-14 -->
@@ -277,5 +279,40 @@
       </figure>
     </section>
   </main>
+  <script>
+    document.querySelectorAll('img[data-fallback]').forEach((img) => {
+      function handleBaseError() {
+        const fallbackSrc = img.dataset.fallback;
+        if (fallbackSrc && img.src !== fallbackSrc) {
+          img.src = fallbackSrc;
+        } else {
+          img.removeEventListener('error', handleBaseError);
+        }
+      }
+
+      img.addEventListener('error', handleBaseError);
+
+      if (img.complete && img.naturalWidth === 0) {
+        handleBaseError();
+      }
+    });
+
+    document.querySelectorAll('.hover-image').forEach((img) => {
+      function handleHoverError() {
+        const parentFigure = img.closest('.artwork');
+        if (parentFigure) {
+          parentFigure.classList.remove('has-hover');
+        }
+        img.removeEventListener('error', handleHoverError);
+        img.remove();
+      }
+
+      img.addEventListener('error', handleHoverError);
+
+      if (img.complete && img.naturalWidth === 0) {
+        handleHoverError();
+      }
+    });
+  </script>
 </body>
 </html>
