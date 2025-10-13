@@ -50,7 +50,7 @@
 
     main {
       max-width: 1200px;
-      margin: 0 auto 96px;
+      margin: 0 auto 48px;
       padding: 0 20px;
     }
 
@@ -130,10 +130,17 @@
       display: none;
     }
 
+    .gallery-caption {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
     .site-footer {
       text-align: center;
       font-size: 18px;
-      padding: 32px 20px 48px;
+      padding: 28px 20px 32px;
     }
   </style>
 </head>
@@ -282,6 +289,9 @@
         </div>
       </figure>
     </section>
+    <p class="gallery-caption">
+      Installation views from As Smoke Loses Itself in Air, Patriothall Gallery, Edinburgh, Scotland, 2025.
+    </p>
   </main>
   <script>
     document.querySelectorAll('img[data-fallback]').forEach((img) => {
@@ -339,6 +349,66 @@
         }
       });
     });
+
+    const captionPhrase = 'As Smoke Loses Itself in Air';
+
+    function italicizePhraseInElement(element, phrase) {
+      if (!element || !phrase) return;
+
+      const walker = document.createTreeWalker(
+        element,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode(node) {
+            return node.textContent && node.textContent.includes(phrase)
+              ? NodeFilter.FILTER_ACCEPT
+              : NodeFilter.FILTER_SKIP;
+          }
+        }
+      );
+
+      const nodesToProcess = [];
+      while (walker.nextNode()) {
+        nodesToProcess.push(walker.currentNode);
+      }
+
+      nodesToProcess.forEach((textNode) => {
+        const originalText = textNode.textContent;
+        if (!originalText) return;
+
+        const parent = textNode.parentNode;
+        if (!parent) return;
+
+        const fragment = document.createDocumentFragment();
+        let searchIndex = 0;
+        let matchIndex = originalText.indexOf(phrase, searchIndex);
+
+        while (matchIndex !== -1) {
+          if (matchIndex > searchIndex) {
+            fragment.appendChild(
+              document.createTextNode(originalText.slice(searchIndex, matchIndex))
+            );
+          }
+
+          const emphasis = document.createElement('em');
+          emphasis.textContent = phrase;
+          fragment.appendChild(emphasis);
+
+          searchIndex = matchIndex + phrase.length;
+          matchIndex = originalText.indexOf(phrase, searchIndex);
+        }
+
+        if (searchIndex < originalText.length) {
+          fragment.appendChild(document.createTextNode(originalText.slice(searchIndex)));
+        }
+
+        parent.replaceChild(fragment, textNode);
+      });
+    }
+
+    document
+      .querySelectorAll('.gallery-caption, figcaption')
+      .forEach((caption) => italicizePhraseInElement(caption, captionPhrase));
   </script>
   <footer class="site-footer">© Caroline Coolidge 2025</footer>
 </body>
