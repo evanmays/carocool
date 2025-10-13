@@ -1,500 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caroline Coolidge - Artist</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caroline Coolidge</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
 
-        body{
-            margin: 0;
-            padding: 0 20px 20px;
-            font-family: "Times New Roman", Times, serif;
-        }
-        header {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 48px 20px 32px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            text-align: center;
-            color: #0f0f0f;
-        }
-        .name {
-            font-size: 34px;
-            font-weight: 400;
-            letter-spacing: 0.04em;
-            margin: 0;
-            order: 1;
-        }
-        #aboutLink {
-            font-size: 16px;
-            color: #808080; /* match footer grey */
-        }
-        header a {
-            text-decoration: none;
-            color: #333;
-            font-size: 18px;
-        }
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-        a:hover {
-            color: #EE5C35;
-        }
-        .contact-email {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            padding-bottom: 1px;
-            transition: color 0.2s ease, border-bottom-color 0.2s ease;
-        }
-        .contact-email:hover,
-        .contact-email:focus {
-            border-bottom-color: #EE5C35;
-        }
-        #aboutLink:hover {
-            color: #EE5C35;
-            cursor: pointer;
-        }
-        .name a,
-        .name a:hover {
-            color: inherit;
-            cursor: default;
-        }
-        .gallery, .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .artwork {
-            margin-bottom: 80px;
-        }
-        .artwork img {
-            width: 100%;
-            height: auto;
-            cursor: pointer;
-        }
-        .artwork p {
-            margin-top: 10px;
-            font-size: 16px;
-            text-align: center;
-        }
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            overflow: auto;
-        }
-        .lightbox-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .lightbox-image-container {
-            max-width: 90%;
-            max-height: calc(100% - 80px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
-        .lightbox-caption {
-            display: none;
-            color: black;
-            font-size: 16px;
-            max-width: 90%;
-            text-align: center;
-        }
-        .lightbox-title {
-            color: black;
-            font-size: 16px;
-            max-width: 90%;
-            text-align: center;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-        .close {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            color: black;
-            font-size: 30px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        .menu {
-            width: 100%;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 12px;
-            order: 2;
-        }
-        .menu #aboutLink {
-            position: relative;  /* Change to relative positioning */
-            z-index: 2;  /* Ensure the text is above the pseudo-element */
-        }
-        .menu #aboutLink::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            bottom: -10px;
-            left: -10px;
-            z-index: 1;
-        }
-        .menu #aboutLink.change {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .menu #aboutLink.change::before {
-            display: none;
-        }
-        .menu .hamburger-menu {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            right: 0;
-        }
-        .hamburger-menu {
-            padding: 14px 0;
-        }
-        .hamburger-menu.change {
-            cursor: pointer;
-        }
-        
-        .bar {
-            width: 35px;
-            /* height: 5px; */
-            height: 2px;
-            margin: 6px 0;
-            background-color: black;
-            transition: all 0.3s ease;
-        }
-        .hamburger-menu:hover .bar, .close:hover .bar {
-            background-color: #EE5C35;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        .bar:first-of-type {
-            opacity: 0;
-        }
-        .bar:nth-of-type(2) {
-            opacity: 0;
-        }
-        .change .bar:nth-of-type(1) {
-            opacity: 1;
-            transform: rotate(-45deg) translate(-5px, 5px);
-        }
-        .change .bar:nth-of-type(2) {
-            opacity: 1;
-            transform: rotate(45deg) translate(0px, -1px);
-        }
-        .about-content p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .about-content {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-        .about-left, .about-right {
-            flex: 1;
-        }
-        .about-left {
-            text-align: center;
-        }
-        .about-right p {
-            margin: 0 0 16px 0;
-        }
-        .about-right p:last-child {
-            margin-bottom: 0;
-        }
-        .about-image {
-            width: 85%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-        .about-image-caption {
-            font-size: 0.95em !important;
-            text-align: center;
-            margin-top: 8px;
-            margin-bottom: 60px;
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 0;
-                font-size: 14px;
-            }
-            .name {
-                font-size: 20px;
-            }
-            .menu a {
-                margin-left: 0;
-            }
-            .gallery, .about-content {
-                padding: 10px;
-            }
-            .artwork {
-                margin-bottom: 40px;
-            }
-            .artwork p {
-                margin-top: 5px;
-                font-size: 14px;
-            }
-            .lightbox-caption, .lightbox-title {
-                font-size: 14px;
-            }
-            .about-content p {
-                font-size: 14px;
-            }
-            .about-image-caption {
-                font-size: 0.8em !important;
-                margin-bottom: 20px;
-            }
-            .about-right p {
-                margin: 0 0 16px 0;
-            }
-           .about-right p:last-child {
-               margin-top: 10px;
-               margin-bottom: 0;
-           }
-            .about-left, .about-right {
-                padding: 0 20px;
-            }
-            .about-image {
-                width: 100%;
-            }
-            .about-content {
-                flex-direction: column;
-            }
-            .artwork img {
-                cursor: default;
-            }
-        }
-    </style>
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      color: #0f0f0f;
+      background-color: #ffffff;
+    }
+
+    header {
+      text-align: center;
+      padding: 48px 20px 32px;
+    }
+
+    header h1 {
+      font-size: 34px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      margin: 0;
+    }
+
+    header nav {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+
+    header nav a {
+      grid-column: 2;
+      justify-self: center;
+      color: #6f6f6f;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.2s ease;
+    }
+
+    header nav a:hover,
+    header nav a:focus {
+      color: #111111;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      padding: 0 20px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    figure.artwork {
+      margin: 0;
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #f3f3f3;
+      cursor: pointer;
+    }
+
+    figure.artwork:focus,
+    figure.artwork:focus-within {
+      outline: 2px solid #222222;
+      outline-offset: 4px;
+    }
+
+    .image-stack {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-stack picture,
+    .image-stack img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .base-image,
+    .hover-image {
+      object-fit: cover;
+    }
+
+    .base-image {
+      transition: opacity 0.35s ease;
+    }
+
+    .hover-image {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    figure.artwork.has-hover:hover .hover-image,
+    figure.artwork.has-hover:focus-within .hover-image {
+      opacity: 1;
+    }
+
+    figure.artwork.has-hover:hover .base-image,
+    figure.artwork.has-hover:focus-within .base-image {
+      opacity: 0;
+    }
+
+    figcaption {
+      display: none;
+    }
+
+    .site-footer {
+      text-align: center;
+      font-size: 16px;
+      padding: 40px 20px 64px;
+      letter-spacing: 0.04em;
+      color: #6f6f6f;
+    }
+
+    @media (max-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="menu">
-            <a href="#about" onclick="showAbout()" id="aboutLink">about</a>
-            <div class="hamburger-menu" onclick="showGallery()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
+  <header>
+    <h1>Caroline Coolidge</h1>
+    <nav aria-label="Main navigation">
+      <a href="about.html"><em>About</em></a>
+    </nav>
+  </header>
+  <main>
+    <section class="gallery-grid" aria-label="Artwork gallery">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-15" aria-label="View Work 15">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 500px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-15-A.jpg">
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-15-A.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-15-A.jpg" alt="A horizontal, dark blue, purple, green, and white abstract painting of undulating shapes by Caroline Coolidge on a white wall." loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-15-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <h1 class="name">
-          <a href="#" onclick="showGallery()">Caroline Coolidge</a>
-        </h1>
-    </header>
-<div class="gallery" id="gallery">
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-24.jpg" alt="A horizontal abstract painting by artist Caroline Coolidge, featuring three large shapes of dark blue, the most prominent being in the center left and curved, and other sections of fluffy, illustrative white, pale pink, and pale yellow paint." onclick="openLightbox(this, '<i>Life Cycle of a Cumulonimbus</i>, 2025<br>Oil on canvas<br>24 x 30 in')">
-            <p><i>Life Cycle of a Cumulonimbus</i>, 2025<br>Oil on canvas<br>24 x 30 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-14" aria-label="View Work 14">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-14-A.jpg" alt="A vertical painting by Caroline Coolidge with a dark blue background and a twisting, light horizontal column on the left side, converging with the red-brown circular shape on the right." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-14-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-23.jpg" alt="A dark, deep, eggplant color dominates this horizontal abstract painting by Caroline Coolidge and includes a dramatic curved, silver pink line that curves down, and across the center of the painting, where it meets other lines and shapes on the right side." onclick="openLightbox(this, '<i>Machine Breath</i>, 2025<br>Oil on canvas<br>30 x 40 in')">
-            <p><i>Machine Breath</i>, 2025<br>Oil on canvas<br>30 x 40 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-13" aria-label="View Work 13">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-13-A.jpg" alt="A dark, deep, eggplant color dominates this horizontal abstract painting by Caroline Coolidge and includes a dramatic, curved, silver pink line that curves down and across the center of the painting, where it meets other lines and shapes on the right side." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-13-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-22.jpg" alt="A vertical abstract painting by Caroline Coolidge with a dark blue smooth, layered bottom left half and a light, blue, turquoise, and lime green section on the top right of interposing layers of paint that resemble light." onclick="openLightbox(this, '<i>Glassine Pigment</i>, 2025<br>Oil on canvas<br>30 x 24 in')">
-            <p><i>Glassine Pigment</i>, 2025<br>Oil on canvas<br>30 x 24 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-12" aria-label="View Work 12">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-12-A.jpg" alt="A vertical painting by artist Caroline Coolidge on a white wall that is predominantly pink and red, with touches of green and dark brown in the shape of an eye." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-12-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-21.jpg" alt="A vertical abstract painting by Caroline Coolidge, the top two-thirds is smooth and ranges in green, tan, orange, and blue tones. The bottom third in dark blue and more textural and rough." onclick="openLightbox(this, '<i>Earth Spill</i>, 2025<br>Oil on canvas<br>40 x 30 in')">
-            <p><i>Earth Spill</i>, 2025<br>Oil on canvas<br>40 x 30 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-11" aria-label="View Work 11">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-11-A.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-11-A.jpg" alt="A square abstract painting by Caroline Coolidge that is predominantly blue, yellow, and pale gray with wavy lines creating a loose grid." loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-11-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-20.jpg" alt="A vertical painting by artist Caroline Coolidge that is predominantly print and red, with touches of green." onclick="openLightbox(this, '<i>Esophageal Petals</i>, 2025<br>Oil on canvas<br>12 x 9 in')">
-            <p><i>Esophageal Petals</i>, 2025<br>Oil on canvas<br>12 x 9 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-10" aria-label="View Work 10">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-10-A.jpg" alt="A vertical abstract painting by Caroline Coolidge, installed on a white wall, with the top two-thirds of the painting being smooth and ranging in green, tan, orange, and blue tones, and the bottom third in dark blue and more textural and rough." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-10-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-19.jpg" alt="A square, highly textured abstract painting by Caroline Coolidge that is primarily yellow and down, with textured lines throughout, giving the impression of tree bark." onclick="openLightbox(this, '<i>Ghost Print I</i>, 2025<br>Monofilament polyester screen-printing mesh, acrylic screen-printing paste, powdered pigment, and graphite powder on canvas<br>48 x 48 in')">
-            <p><i>Ghost Print I</i>, 2025<br>Monofilament polyester screen-printing mesh, acrylic screen-printing paste, powdered pigment, and graphite powder on canvas<br>48 x 48 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-09" aria-label="View Work 09">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-09-A.jpg" alt="A horizontal abstract painting by artist Caroline Coolidge with a dark grey base and translucent light tan, pink, and yellow layers obscuring the darker sections below." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-09-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-18.jpg" alt="A square abstract painting by Caroline Coolidge that is predominantly blue, yellow, and pale gray with wavy lines creating a loose grid." onclick="openLightbox(this, '<i>Ghost Print II</i>, 2025<br>Monofilament polyester screen-printing mesh, acrylic screen-printing paste, powdered pigment, and graphite powder on canvas<br>48 x 48 in')">
-            <p><i>Ghost Print II</i>, 2025<br>Monofilament polyester screen-printing mesh, acrylic screen-printing paste, powdered pigment, and graphite powder on canvas<br>48 x 48 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-08" aria-label="View Work 08">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-08-A.jpg" alt="An installation by Caroline Coolidge comprised of a long, vertical, translucent, yellow fabric, catching light, cascades from the gallery's white-grey ceiling and rests lightly on the room’s concrete floor." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-08-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-17.jpg" alt="A square, abstract, tan painting by Caroline Coolidge, dominated by a large loose square shape in the center and light splotches surrounding it." onclick="openLightbox(this, '<i>Matrix</i>, 2025<br>Monofilament polyester screen-printing mesh, acrylic screen-printing paste, powdered pigment, and graphite powder on canvas<br>48 x 48 in')">
-            <p><i>Matrix</i>, 2025<br>Monofilament polyester screen-printing mesh, acrylic screen-printing paste, powdered pigment, and graphite powder on canvas<br>48 x 48 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-07" aria-label="View Work 07">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-07-A.jpg" alt="A long, vertical window covered in translucent layers of painted mesh screens, giving the appearance of a glowing impressionist painting." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-07-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-16.jpg" alt="A vertical, translucent, yellow fabric, catching light, cascades from the gallery's white-grey ceiling and rests lightly on the room’s concrete floor, artwork created by Caroline Coolidge." onclick="openLightbox(this, '<i>echoes</i>, 2024<br>Acrylic ink and pigment on screen-printing mesh<br>120 x 50 in')">
-            <p><i>echoes</i>, 2024<br>Acrylic ink and pigment on screen-printing mesh<br>120 x 50 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-06" aria-label="View Work 06">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-06-A.jpg" alt="Photograph of a vertical, dark-blue and black sublime abstract painting by Caroline Coolidge, hung on a white wall." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-06-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-15.jpg" alt="A long, vertical window covered in translucent layers of painted mesh screens, giving the appearance of a glowing impressionist painting. It is being contemplated by a dark-haired man in a blue shirt who is facing the artwork by Caroline Coolidge." onclick="openLightbox(this, '<i>Facsimile (Window Intervention)</i>, 2024<br>Pigment, graphite, and ink on screen-printing mesh installed over window<br>87 x 33 × 12 in')">
-            <p><i>Facsimile (Window Intervention)</i>, 2024<br>Pigment, graphite, and ink on screen-printing mesh installed over window<br>87 x 33 × 12 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-05" aria-label="View Work 05">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-05-A.jpg" alt="An atmospheric, lime green and grey yellow, vertical, abstract painting by Caroline Coolidge with subtle marks primarily drawn at right angles to the painting’s edge." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-05-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-14.jpg" alt="A close-up of highly textured layers of transparent painted fabric with light shining from behind. Artwork by Caroline Coolidge." onclick="openLightbox(this, '<i>Facsimile (Window Intervention)</i>, 2024<br>Pigment, graphite, and ink on screen-printing mesh installed over window<br>Detail')">
-            <p><i>Facsimile (Window Intervention)</i>, 2024<br>Pigment, graphite, and ink on screen-printing mesh installed over window<br>Detail</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-04" aria-label="View Work 04">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-04-A.jpg" alt="A large, vertical, green, textural sculpture by Caroline Coolidge, resting on a light grey gallery floor with a white wall behind it, made out of a translucent fabric material, shiny in some sections." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-04-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-13.jpg" alt="Photograph of a white gallery wall with a blue abstract painting, by artist Caroline Coolidge, hung vertically in the center right of the composition and an artfully arranged pile of blue and green painted mesh fabrics on the floor, corresponding to the painting." onclick="openLightbox(this, '<i>Parallel Memory</i>, 2024<br>Installation view, Ruskin School of Art Project Space, University of Oxford<br>Oxford, England, UK')">
-            <p><i>Parallel Memory</i>, 2024<br>Installation view, Ruskin School of Art Project Space, University of Oxford<br>Oxford, England, UK</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-03" aria-label="View Work 03">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-03-A.jpg" alt="A moody vertical abstract painting by Caroline Coolidge on light paper, primarily composed of grey and purple marks in the bottom half of the composition, an orange grey in the top left, and dark red purple in the top right." loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-03-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-12.jpg" alt="Photograph showing a closely cropped view of overlapping, bunched up mesh screens on a light-grey floor in four distinct shades of light and dark, blue and green. Artwork by Caroline Coolidge." onclick="openLightbox(this, '<i>Prototypes</i>, 2024<br>Installation view (detail), Ruskin School of Art Project Space, University of Oxford<br>Oxford, England, UK')">
-            <p><i>Prototypes</i>, 2024<br>Installation view (detail), Ruskin School of Art Project Space, University of Oxford<br>Oxford, England, UK</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-02" aria-label="View Work 02">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 500px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-02-A.jpg">
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-02-A.jpg">
+            <source media="(max-width: 900px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-02-A.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-02-A.jpg" alt="Two gray, monotone prints on paper by artist Caroline Coolidge lie on a gray concrete floor, not touching each other." loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-02-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-11.jpg" alt="A large, vertical, green, textural sculpture by Caroline Coolidge, resting on a light grey gallery floor with a white wall behind it, made out of a translucent fabric material, shiny in some sections." onclick="openLightbox(this, '<i>Flux</i>, 2024<br>Pigment, ink, and resin on screen-printing mesh<br>62 x 30 x 28 in')">
-            <p><i>Flux</i>, 2024<br>Pigment, ink, and resin on screen-printing mesh<br>62 x 30 x 28 in</p>
+      </figure>
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-01" aria-label="View Work 01">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-01-A.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-01-A.jpg" alt="A large screen with a black, white, and yellow animation still of abstract lines resembling tree limbs by artist Caroline Coolidge. The screen has speakers on the left and right sides of it and has a tan table with paper stacked on it." loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-01-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-10.jpg" alt="Photograph of a vertical, dark-blue and black sublime abstract painting by artist Caroline Coolidge, hung on a white wall." onclick="openLightbox(this, '<i>Parallel Memory</i>, 2024<br>Pigment, ink, and acrylic on board<br>33 x 23 in')">
-            <p><i>Parallel Memory</i>, 2024<br>Pigment, ink, and acrylic on board<br>33 x 23 in</p>
-        </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-09.jpg" alt="A vertical grey painting by Caroline Coolidge with light, chalky grey in the foreground and subtle strokes that create lines dividing the painting into four equal quadrants." onclick="openLightbox(this, '<i>Screening Memory (Toxic Impression I)</i>, 2024<br>Acrylic, graphite, and pigment on board<br>33 x 23 in')">
-            <p><i>Screening Memory (Toxic Impression I)</i>, 2024<br>Acrylic, graphite, and pigment on board<br>33 x 23 in</p>
-        </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-08.jpg" alt="An atmospheric, lime green and grey green, vertical, abstract painting by Caroline Coolidge with subtle marks primarily drawn at right angles to the painting’s edge." onclick="openLightbox(this, '<i>Screening Memory (Toxic Impression II)</i>, 2024<br>Acrylic, graphite, pigment, and colored pencil on board<br>33 x 23 in')">
-            <p><i>Screening Memory (Toxic Impression II)</i>, 2024<br>Acrylic, graphite, pigment, and colored pencil on board<br>33 x 23 in</p>
-        </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-07.jpg" alt="A horizontal abstract painting by Caroline Coolidge with a dark grey base and translucent light tan, pink, and yellow layers obscuring darker sections below." onclick="openLightbox(this, '<i>Setting Trees</i>, 2024<br>Oil, acrylic, and graphite on paper<br>22 x 30 in')">
-            <p><i>Setting Trees</i>, 2024<br>Oil, acrylic, and graphite on paper<br>22 x 30 in</p>
-        </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-06.jpg" alt="A moody vertical abstract painting by Caroline Coolidge on light paper, primarily composed of grey and purple marks in the bottom half of the composition, an orange grey in the top left, and dark red purple in the top right." onclick="openLightbox(this, '<i>Reflection in Smog (of Mirrors and Moss)</i>, 2024<br>Pigment, graphite, ink, oil, and screen print on paper<br>22 x 15 in')">
-            <p><i>Reflection in Smog (of Mirrors and Moss)</i>, 2024<br>Pigment, graphite, ink, oil, and screen print on paper<br>22 x 15 in</p>
-        </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-05.jpg" alt="A dynamic vertical black and white drawing by Caroline Coolidge, with two dark grey and black textural, rectangular shapes in the center of a white and grey background, giving the sense of movement upwards." onclick="openLightbox(this, '<i>Screen Impressions VII</i>, 2024<br>Graphite, charcoal, and acrylic medium on paper mounted on board<br>22 x 15 in')">
-            <p><i>Screen Impressions VII</i>, 2024<br>Graphite, charcoal, and acrylic medium on paper mounted on board<br>22 x 15 in</p>
-        </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-04.jpg" alt="A vertical black and white drawing by Caroline Coolidge, with dark blacks and grey abstract shapes swirling around the top half of the composition and light grey and white marks in the bottom." onclick="openLightbox(this, '<i>Screen Impressions IX</i>, 2024<br>Graphite, charcoal, and acrylic medium on paper mounted on board<br>22 x 15 in')">
-            <p><i>Screen Impressions IX</i>, 2024<br>Graphite, charcoal, and acrylic medium on paper mounted on board<br>22 x 15 in</p>
-        </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-03.jpg" alt="A photograph of a large, black and white, abstract, highly textural, charcoal drawing, installed between two white slanted metal beams and rolled up at the bottom, seen from an angled view, with the top of the drawing cut off, with two smaller light grey prints on the concrete floor beneath it. Art installation by Caroline Coolidge." onclick="openLightbox(this, '<i>The Unfelt Pressure Between the Body and the Screen</i>, 2023<br>Installation view, Ruskin School of Art Project Space, University of Oxford<br>Oxford, England, UK')">
-            <p><i>The Unfelt Pressure Between the Body and the Screen</i>, 2023<br>Installation view, Ruskin School of Art Project Space, University of Oxford<br>Oxford, England, UK</p>
-        </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-02.jpg" alt="A large screen with a black, white, and yellow animation still of abstract lines resembling tree limbs by artist Caroline Coolidge. The screen has speakers on the left and right sides of it and has a tan table with paper stacked on it." onclick="openLightbox(this, '<i>re/de/constructed language</i>, 2022<br>Installation view, Carpenter Center for the Visual Arts at Harvard University<br>Cambridge, MA, USA')">
-            <p><i>re/de/constructed language</i>, 2022<br>Installation view, Carpenter Center for the Visual Arts at Harvard University<br>Cambridge, MA, USA</p>
-        </div>
-        <div class="artwork">
-            <img src="art3/Caroline-Coolidge-Artist-Website-01.jpg" alt="A gallery space with an art installation by Caroline Coolidge comprised of a projected image on a screen mounted to the far right wall, a table with stacks of paper on it, abstract paintings on wood and paper stacked on the shiny concrete floor, and a large abstract book form resting on a medium-high table to the back-left of the works on the floor." onclick="openLightbox(this, '<i>re/de/constructed language</i>, 2022<br>Installation view, Carpenter Center for the Visual Arts at Harvard University<br>Cambridge, MA, USA')">
-            <p><i>re/de/constructed language</i>, 2022<br>Installation view, Carpenter Center for the Visual Arts at Harvard University<br>Cambridge, MA, USA</p>
-        </div>
-    </div>
-
-    <div class="about-content" style="display: none;">
-        <div class="about-left">
-            <img src="art3/Caroline-Coolidge-in-her-studio.jpg" alt="Caroline Coolidge in her studio" class="about-image">
-        <p class="about-image-caption">Portrait by Deema Alghunaim.</p>
-        </div>
-        <div class="about-right">
-            <p>Caroline Coolidge is driven by investigations of the ephemeral. She traces her practice to the blur between painting and printmaking. Her works are remnants of unexpected applications of process and tools, and embody the unraveling that occurs with their creation. Through abstraction, Coolidge creates a sense of disorientation. She forms uncertain memories, reflects on the history of image-making, and investigates the breakdown of reality and stability, permeating the present.</p>
-
-            <p>Coolidge’s practice is based in Edinburgh, Scotland. Recent solo exhibitions include <i>As Smoke Loses Itself in Air</i>, Patriothall Gallery, Edinburgh, Scotland, 2025; <i>Dismantling the Screen</i>, Dolphin Gallery at St John's College, Oxford, England, 2024; and <i>re/de/constructed language</i>, Spoke Gallery, Boston, Massachusetts, United States, 2022.</p>
-
-            <p>Coolidge has worked as a teaching assistant in the Art, Film, and Visual Studies department at Harvard University, has been a Curatorial Research Fellow at the MIT List Visual Arts Center, and has held residencies at the Vermont Studio Center and the Salzburg International Summer Academy of Fine Arts. She completed her undergraduate studies at Harvard University in 2022 and earned a Master of Fine Arts with distinction from the Ruskin School of Art, University of Oxford, in 2024.</p>
-            <p>Contact: <a class="contact-email" href="mailto:studio@carolinecoolidge.com">studio@carolinecoolidge.com</a></p>
-        </div>
-    </div>
-
-
-    <div class="lightbox" id="lightbox">
-        <div class="close hamburger-menu" onclick="closeLightbox()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <div class="lightbox-content">
-            <div class="lightbox-image-container">
-                <img id="lightbox-image" src="" alt="Lightbox Image">
-            </div>
-            <div class="lightbox-caption" id="lightbox-caption"></div>
-        </div>
-    </div>
-    <script>
-        const lightboxHamburgerMenu = document.querySelector(".lightbox .hamburger-menu");
-
-        function openLightbox(img, description) {
-            if (window.innerWidth <= 600) {
-                return;
-            }
-            const lightboxImage = $('#lightbox-image');
-            lightboxImage.one('load', function() {
-                $('#lightbox').fadeIn();
-            });
-            lightboxImage.attr('src', img.src);
-            $('body').css('overflow', 'hidden');
-            lightboxHamburgerMenu.classList.add("change");
-        }
-
-        function closeLightbox() {
-            $('#lightbox').fadeOut();
-            $('body').css('overflow', '');
-            if (lightboxHamburgerMenu.classList.contains("change")) {
-                lightboxHamburgerMenu.classList.remove("change");
-            }
-        }
-        const aboutHamburgerMenu = document.querySelector(".menu .hamburger-menu");
-        function showAbout() {
-            $('#gallery').hide();
-            $('.about-content').show();
-            
-            document.querySelector("#aboutLink").classList.add("change");
-            aboutHamburgerMenu.classList.add("change");
-            window.location.hash = "about"
-        }
-        
-        function showGallery() {
-            $('.about-content').hide();
-            $('#gallery').show();
-            if (document.querySelector("#aboutLink").classList.contains("change")) {
-                document.querySelector("#aboutLink").classList.remove("change");
-            }
-            if (aboutHamburgerMenu.classList.contains("change")) {
-                aboutHamburgerMenu.classList.remove("change");
-            }
-            window.location.hash = ""
-        }
-
-        if (window.location.hash === '#about') {
-          showAbout();
+      </figure>
+    </section>
+  </main>
+  <script>
+    document.querySelectorAll('img[data-fallback]').forEach((img) => {
+      function handleBaseError() {
+        const fallbackSrc = img.dataset.fallback;
+        if (fallbackSrc && img.src !== fallbackSrc) {
+          img.src = fallbackSrc;
         } else {
-          showGallery();
+          img.removeEventListener('error', handleBaseError);
+        }
+      }
+
+      img.addEventListener('error', handleBaseError);
+
+      if (img.complete && img.naturalWidth === 0) {
+        handleBaseError();
+      }
+    });
+
+    document.querySelectorAll('.hover-image').forEach((img) => {
+      function handleHoverError() {
+        const parentFigure = img.closest('.artwork');
+        if (parentFigure) {
+          parentFigure.classList.remove('has-hover');
+        }
+        img.removeEventListener('error', handleHoverError);
+        img.remove();
+      }
+
+      img.addEventListener('error', handleHoverError);
+
+      if (img.complete && img.naturalWidth === 0) {
+        handleHoverError();
+      }
+    });
+
+    function navigateToGroup(groupId) {
+      if (!groupId) return;
+      const currentUrl = new URL(window.location.href);
+      const basePath = currentUrl.pathname.replace(/[^/]*$/, '');
+      const target = `${basePath}work.html?group=${encodeURIComponent(groupId)}`;
+      window.location.assign(target);
+    }
+
+    document.querySelectorAll('figure.artwork[data-group]').forEach((figure) => {
+      const groupId = figure.dataset.group;
+      figure.addEventListener('click', () => {
+        navigateToGroup(groupId);
+      });
+
+      figure.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          navigateToGroup(groupId);
+        }
+      });
+    });
+
+    const captionPhrase = 'As Smoke Loses Itself in Air';
+
+    function italicizePhraseInElement(element, phrase) {
+      if (!element || !phrase) return;
+
+      const walker = document.createTreeWalker(
+        element,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode(node) {
+            return node.textContent && node.textContent.includes(phrase)
+              ? NodeFilter.FILTER_ACCEPT
+              : NodeFilter.FILTER_SKIP;
+          }
+        }
+      );
+
+      const nodesToProcess = [];
+      while (walker.nextNode()) {
+        nodesToProcess.push(walker.currentNode);
+      }
+
+      nodesToProcess.forEach((textNode) => {
+        const originalText = textNode.textContent;
+        if (!originalText) return;
+
+        const parent = textNode.parentNode;
+        if (!parent) return;
+
+        const fragment = document.createDocumentFragment();
+        let searchIndex = 0;
+        let matchIndex = originalText.indexOf(phrase, searchIndex);
+
+        while (matchIndex !== -1) {
+          if (matchIndex > searchIndex) {
+            fragment.appendChild(
+              document.createTextNode(originalText.slice(searchIndex, matchIndex))
+            );
+          }
+
+          const emphasis = document.createElement('em');
+          emphasis.textContent = phrase;
+          fragment.appendChild(emphasis);
+
+          searchIndex = matchIndex + phrase.length;
+          matchIndex = originalText.indexOf(phrase, searchIndex);
         }
 
+        if (searchIndex < originalText.length) {
+          fragment.appendChild(document.createTextNode(originalText.slice(searchIndex)));
+        }
 
-        $(document).keydown(function(e) {
-            if (e.key === "Escape") {
-                closeLightbox();
-            }
-        });
-    </script>
+        parent.replaceChild(fragment, textNode);
+      });
+    }
+
+    document
+      .querySelectorAll('.gallery-caption, figcaption')
+      .forEach((caption) => italicizePhraseInElement(caption, captionPhrase));
+  </script>
+  <footer class="site-footer"><span>© 2025 Caroline Coolidge</span></footer>
 </body>
 </html>
