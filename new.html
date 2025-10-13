@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caroline Coolidge – New Gallery Layout</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      color: #0f0f0f;
+      background-color: #ffffff;
+    }
+
+    header {
+      text-align: center;
+      padding: 48px 20px 32px;
+    }
+
+    header h1 {
+      font-size: 34px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      margin: 0;
+    }
+
+    header nav {
+      margin-top: 12px;
+    }
+
+    header nav a {
+      color: #6f6f6f;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.2s ease;
+    }
+
+    header nav a:hover,
+    header nav a:focus {
+      color: #111111;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto 96px;
+      padding: 0 20px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    @media (max-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    figure.artwork {
+      margin: 0;
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #f3f3f3;
+    }
+
+    figure.artwork.has-hover {
+      cursor: pointer;
+    }
+
+    figure.artwork:focus-within {
+      outline: 2px solid #222222;
+      outline-offset: 4px;
+    }
+
+    .image-stack {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-stack picture,
+    .image-stack img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .base-image,
+    .hover-image {
+      object-fit: cover;
+    }
+
+    .base-image {
+      transition: opacity 0.35s ease;
+    }
+
+    .hover-image {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    figure.artwork.has-hover:hover .hover-image,
+    figure.artwork.has-hover:focus-within .hover-image {
+      opacity: 1;
+    }
+
+    figure.artwork.has-hover:hover .base-image,
+    figure.artwork.has-hover:focus-within .base-image {
+      opacity: 0;
+    }
+
+    figcaption {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Caroline Coolidge</h1>
+    <nav aria-label="Main navigation">
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+  <main>
+    <section class="gallery-grid" aria-label="Artwork gallery">
+      <!-- Caroline-Coolidge-Artist-Website-01 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-01-C.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-01-A.jpg" alt="Work 01" loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-01-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-02 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 500px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-02-E.jpg">
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-02-D.jpg">
+            <source media="(max-width: 900px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-02-C.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-02-A.jpg" alt="Work 02" loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-02-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-03 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-03-C.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-03-A.jpg" alt="Work 03" loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-03-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-04 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-04-C.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-04-A.jpg" alt="Work 04" loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-04-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-05 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-05-A.jpg" alt="Work 05" loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-05-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-06 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-06-C.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-06-D.jpg" alt="Work 06" loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-06-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-07 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-07-C.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-07-A.jpg" alt="Work 07" loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-07-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-08 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-08-C.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-08-A.jpg" alt="Work 08" loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-08-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-09 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-09-A.jpg" alt="Work 09" loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-09-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-10 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-10-A.jpg" alt="Work 10" loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-10-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-11 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-11-C.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-11-A.jpg" alt="Work 11" loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-11-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-12 -->
+      <figure class="artwork" tabindex="0">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-12-B.jpg" alt="Work 12" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-13 -->
+      <figure class="artwork" tabindex="0">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-13-A.jpg" alt="Work 13" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-14 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-14-A.jpg" alt="Work 14" loading="lazy">
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-14-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+      <!-- Caroline-Coolidge-Artist-Website-15 -->
+      <figure class="artwork has-hover" tabindex="0">
+        <div class="image-stack">
+          <picture>
+            <source media="(max-width: 500px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-15-D.jpg">
+            <source media="(max-width: 700px)" srcset="artoct13/Caroline-Coolidge-Artist-Website-15-C.jpg">
+            <img class="base-image" src="artoct13/Caroline-Coolidge-Artist-Website-15-A.jpg" alt="Work 15" loading="lazy">
+          </picture>
+          <img class="hover-image" src="artoct13/Caroline-Coolidge-Artist-Website-15-B.jpg" alt="" aria-hidden="true" loading="lazy">
+        </div>
+      </figure>
+    </section>
+  </main>
+</body>
+</html>
