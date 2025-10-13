@@ -109,6 +109,53 @@
     <p class="missing-message" data-missing-message hidden>Artwork not found. <a href="new.html">Return to the gallery</a>.</p>
   </main>
   <script>
+    const ALT_TEXT = {
+      "Caroline-Coolidge-Artist-Website-01-A": "A large screen with a black, white, and yellow animation still of abstract lines resembling tree limbs by artist Caroline Coolidge. The screen has speakers on the left and right sides of it and has a tan table with paper stacked on it.",
+      "Caroline-Coolidge-Artist-Website-01-B": "Colorful mixed-media artworks by Caroline Coolidge, created out of paper, wood, and metal, are stacked in a grid above a polished gray concrete floor.",
+      "Caroline-Coolidge-Artist-Website-01-C": "A gallery space with an art installation by Caroline Coolidge comprised of a projected image on a screen mounted to the far right wall, a table with stacks of paper on it, abstract paintings on wood and paper stacked on the shiny concrete floor, and a large abstract book form resting on a medium-high table to the back-left of the works on the floor.",
+      "Caroline-Coolidge-Artist-Website-02-A": "Two gray, monotone prints on paper by artist Caroline Coolidge lie on a gray concrete floor, not touching each other.",
+      "Caroline-Coolidge-Artist-Website-02-B": "Two gray, monotone prints on paper by artist Caroline Coolidge are seen from a different angle and lie on a gray concrete floor, not touching each other.",
+      "Caroline-Coolidge-Artist-Website-02-C": "A photograph of a large, black and white, abstract, highly textural, charcoal drawing, installed between two white slanted metal beams and rolled up at the bottom, seen from an angled view, with the top of the drawing cut off, with two smaller light grey prints on the concrete floor beneath it. Art installation by Caroline Coolidge.",
+      "Caroline-Coolidge-Artist-Website-02-D": "A black and white, textured artwork by Caroline Coolidge is attached to a slanted ceiling and is viewed head-on, with the top portion cropped out.",
+      "Caroline-Coolidge-Artist-Website-02-E": "The image of a close-up detail of a textural black and white artwork showing finger smudges by Caroline Coolidge.",
+      "Caroline-Coolidge-Artist-Website-03-A": "A moody vertical abstract painting by Caroline Coolidge on light paper, primarily composed of grey and purple marks in the bottom half of the composition, an orange grey in the top left, and dark red purple in the top right.",
+      "Caroline-Coolidge-Artist-Website-03-B": "An abstract detail of a gray and purple painting by Caroline Coolidge with wavy lines cutting across the composition.",
+      "Caroline-Coolidge-Artist-Website-03-C": "An abstract detail of a silver and yellow-brown painting by Caroline Coolidge with contrasting amorphous shapes.",
+      "Caroline-Coolidge-Artist-Website-04-A": "A large, vertical, green, textural sculpture by Caroline Coolidge, resting on a light grey gallery floor with a white wall behind it, made out of a translucent fabric material, shiny in some sections.",
+      "Caroline-Coolidge-Artist-Website-04-B": "The middle section of a green-gray fabric sculpture by Caroline Coolidge, defined by the bright white wall on either side of it.",
+      "Caroline-Coolidge-Artist-Website-04-C": "A highly textural green and gray fabric-like surface, showing a detailed view of a sculpture by Caroline Coolidge.",
+      "Caroline-Coolidge-Artist-Website-05-A": "An atmospheric, lime green and grey yellow, vertical, abstract painting by Caroline Coolidge with subtle marks primarily drawn at right angles to the painting’s edge.",
+      "Caroline-Coolidge-Artist-Website-05-B": "The detail of a lime green painting by Caroline Coolidge with gray lines weaving across the image.",
+      "Caroline-Coolidge-Artist-Website-06-A": "Photograph of a white gallery wall with a blue abstract painting, by artist Caroline Coolidge, hung vertically in the center right of the composition, and an artfully arranged pile of blue and green painted mesh fabrics on the floor, corresponding to the painting.",
+      "Caroline-Coolidge-Artist-Website-06-B": "Photograph showing a closely cropped view of an installation by Caroline Coolidge comprised of overlapping, bunched-up mesh screens on a light-grey floor in four distinct shades of light and dark, blue and green.",
+      "Caroline-Coolidge-Artist-Website-06-C": "A detailed photograph of an installation by Caroline Coolidge showing a close-up of layers of transparent mesh screens that are primarily dark blue with a light yellow-green section on the top right.",
+      "Caroline-Coolidge-Artist-Website-06-D": "Photograph of a vertical, dark-blue and black sublime abstract painting by Caroline Coolidge, hung on a white wall.",
+      "Caroline-Coolidge-Artist-Website-06-E": "Detail of a monochrome, blue painting by Caroline Coolidge showcasing intricate patterns in of very dark and very light blue, creating striking abstract patterning.",
+      "Caroline-Coolidge-Artist-Website-07-A": "A long, vertical window covered in translucent layers of painted mesh screens, giving the appearance of a glowing impressionist painting. It is being contemplated by a dark-haired young man in a blue shirt who is facing the artwork by Caroline Coolidge.",
+      "Caroline-Coolidge-Artist-Website-07-B": "The detail of an installation by Caroline Coolidge of a portion of a window covered in layers of painted transparent mesh in light dulled shades of blue, yellow, and grey, with a smooth white wall filling the right of the image.",
+      "Caroline-Coolidge-Artist-Website-07-C": "A close-up of highly textured layers of transparent painted fabric with light shining from behind. Artwork by Caroline Coolidge.",
+      "Caroline-Coolidge-Artist-Website-08-A": "An installation by Caroline Coolidge comprised of a long, vertical, translucent, yellow fabric, catching light, cascades from the gallery's white-grey ceiling and rests lightly on the room’s concrete floor.",
+      "Caroline-Coolidge-Artist-Website-08-B": "The details of an installation by Caroline Coolidge of two painted yellow fabrics that are hanging from a metal ceiling covered in cables.",
+      "Caroline-Coolidge-Artist-Website-08-C": "A close-up detail of an artwork by Caroline Coolidge of a lightly yellow-painted translucent cloth with light hitting its folds and creating dynamic shadows.",
+      "Caroline-Coolidge-Artist-Website-09-A": "A horizontal abstract painting by artist Caroline Coolidge with a dark grey base and translucent light tan, pink, and yellow layers obscuring the darker sections below.",
+      "Caroline-Coolidge-Artist-Website-09-B": "A detailed image of a highly layered abstract painting by Caroline Coolidge with grey shapes in the background and light pink and tan marks overlaying the marks below.",
+      "Caroline-Coolidge-Artist-Website-10-A": "A vertical abstract painting by Caroline Coolidge, installed on a white wall, with the top two-thirds of the painting being smooth and ranging in green, tan, orange, and blue tones, and the bottom third in dark blue and more textural and rough.",
+      "Caroline-Coolidge-Artist-Website-10-B": "A detailed image of a painting by Caroline Coolidge shows the top two-thirds of a gradient of color, moving from orange to green, and the bottom third of the virtual image, a textured dark blue swath.",
+      "Caroline-Coolidge-Artist-Website-11-A": "A square abstract painting by Caroline Coolidge that is predominantly blue, yellow, and pale gray with wavy lines creating a loose grid.",
+      "Caroline-Coolidge-Artist-Website-11-B": "A detailed photo of a mesh, dull yellow and blue painting by Caroline Coolidge, with the quarter left half of the image, including the white gallery wall.",
+      "Caroline-Coolidge-Artist-Website-11-C": "A close up of a painting by Caroline Coolidge of a yellow and blue translucent, wavy patterned abstract surface.",
+      "Caroline-Coolidge-Artist-Website-12-A": "A vertical painting by artist Caroline Coolidge on a white wall that is predominantly pink and red, with touches of green and dark brown in the shape of an eye.",
+      "Caroline-Coolidge-Artist-Website-12-B": "A large gallery space with white walls, high ceilings, and a large window on the right displaying four paintings by Caroline Coolidge, of various sizes.",
+      "Caroline-Coolidge-Artist-Website-13-A": "A dark, deep, eggplant color dominates this horizontal abstract painting by Caroline Coolidge and includes a dramatic, curved, silver pink line that curves down and across the center of the painting, where it meets other lines and shapes on the right side.",
+      "Caroline-Coolidge-Artist-Website-13-B": "A detail of a dark purple painting by Caroline Coolidge with a light silver, pink curving shape moving from the bottom left to the top right of the horizontal image.",
+      "Caroline-Coolidge-Artist-Website-14-A": "A vertical painting by Caroline Coolidge with a dark blue background and a twisting, light horizontal column on the left side, converging with the red-brown circular shape on the right.",
+      "Caroline-Coolidge-Artist-Website-14-B": "A large gallery space with two columns and five colorful abstract paintings by Caroline Coolidge.",
+      "Caroline-Coolidge-Artist-Website-15-A": "A horizontal, dark blue, purple, green, and white abstract painting of undulating shapes by Caroline Coolidge on a white wall.",
+      "Caroline-Coolidge-Artist-Website-15-B": "Two paintings by Caroline Coolidge, the one on the left horizontal and purple, the one on the right vertical and green, hung side by side on a white gallery wall with the gray floor visible at the edge of the frame.",
+      "Caroline-Coolidge-Artist-Website-15-C": "A critical green and brown abstract painting by Caroline Coolidge with horizontal crossing lines of brighter tones.",
+      "Caroline-Coolidge-Artist-Website-15-D": "A sunlight gallery displaying the name of the artist, Caroline Coolidge, and the exhibition title, As Smoke Loses Itself in Air, and two paintings hung behind a column."
+    };
+
     const WORKS = {
       "Caroline-Coolidge-Artist-Website-01": {
         title: "Work 01",
@@ -254,9 +301,8 @@
 
       const image = document.createElement('img');
       image.src = src;
-      const variantMatch = src.match(/-([A-Z])\.jpg$/);
-      const variantLabel = variantMatch ? variantMatch[1] : '';
-      image.alt = `${work.title}${variantLabel ? ` – Variation ${variantLabel}` : ''}`;
+      const fileKey = src.split('/').pop()?.replace(/\.jpg$/i, '') ?? '';
+      image.alt = ALT_TEXT[fileKey] || work.title;
       image.loading = 'lazy';
 
       figure.appendChild(image);
