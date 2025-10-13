@@ -117,12 +117,14 @@
     }
 
     figure.artwork.has-hover:hover .hover-image,
-    figure.artwork.has-hover:focus-within .hover-image {
+    figure.artwork.has-hover:focus-within .hover-image,
+    figure.artwork.has-hover.show-hover .hover-image {
       opacity: 1;
     }
 
     figure.artwork.has-hover:hover .base-image,
-    figure.artwork.has-hover:focus-within .base-image {
+    figure.artwork.has-hover:focus-within .base-image,
+    figure.artwork.has-hover.show-hover .base-image {
       opacity: 0;
     }
 
@@ -335,9 +337,82 @@
       window.location.assign(target);
     }
 
+    const LONG_PRESS_THRESHOLD_MS = 350;
+    const TOUCH_MOVE_THRESHOLD_PX = 10;
+    const getNow = () => (typeof performance !== 'undefined' && typeof performance.now === 'function'
+      ? performance.now()
+      : Date.now());
+
     document.querySelectorAll('figure.artwork[data-group]').forEach((figure) => {
       const groupId = figure.dataset.group;
-      figure.addEventListener('click', () => {
+      let touchSession = null;
+
+      function clearTouchSession() {
+        if (!touchSession) return;
+        figure.classList.remove('show-hover');
+        touchSession = null;
+      }
+
+      function concludeTouchSession(recordLongPress) {
+        if (!touchSession) return;
+        const elapsed = getNow() - touchSession.startTime;
+        const wasLongPress = recordLongPress && !touchSession.moved && elapsed >= LONG_PRESS_THRESHOLD_MS;
+        if (wasLongPress) {
+          figure.dataset.skipNextClick = 'true';
+        }
+        clearTouchSession();
+      }
+
+      figure.addEventListener('pointerdown', (event) => {
+        if (event.pointerType !== 'touch') return;
+        figure.classList.add('show-hover');
+        delete figure.dataset.skipNextClick;
+        touchSession = {
+          startTime: getNow(),
+          startX: event.clientX,
+          startY: event.clientY,
+          moved: false,
+        };
+      });
+
+      figure.addEventListener('pointermove', (event) => {
+        if (event.pointerType !== 'touch' || !touchSession) return;
+        const deltaX = event.clientX - touchSession.startX;
+        const deltaY = event.clientY - touchSession.startY;
+        if (!touchSession.moved && Math.hypot(deltaX, deltaY) > TOUCH_MOVE_THRESHOLD_PX) {
+          touchSession.moved = true;
+          figure.classList.remove('show-hover');
+        }
+      });
+
+      figure.addEventListener('pointerleave', (event) => {
+        if (event.pointerType !== 'touch') return;
+        if (touchSession) {
+          touchSession.moved = true;
+        }
+        concludeTouchSession(false);
+      });
+
+      figure.addEventListener('pointercancel', (event) => {
+        if (event.pointerType !== 'touch') return;
+        if (touchSession) {
+          touchSession.moved = true;
+        }
+        concludeTouchSession(false);
+      });
+
+      figure.addEventListener('pointerup', (event) => {
+        if (event.pointerType !== 'touch') return;
+        concludeTouchSession(true);
+      });
+
+      figure.addEventListener('click', (event) => {
+        if (figure.dataset.skipNextClick === 'true') {
+          event.preventDefault();
+          event.stopPropagation();
+          delete figure.dataset.skipNextClick;
+          return;
+        }
         navigateToGroup(groupId);
       });
 
