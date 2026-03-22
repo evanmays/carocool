@@ -21,17 +21,12 @@
     }
 
     header {
-      padding: 48px 20px 30px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      justify-items: center;
-      row-gap: 0;
+      position: relative;
+      text-align: center;
+      padding: 48px 20px 32px;
     }
 
     header h1 {
-      grid-column: 1 / -1;
-      grid-row: 1;
       font-size: 34px;
       font-weight: 400;
       letter-spacing: 0.04em;
@@ -39,10 +34,9 @@
     }
 
     .close-button {
-      grid-column: 2;
-      grid-row: 1;
-      justify-self: end;
-      align-self: center;
+      position: absolute;
+      top: 48px;
+      right: 20px;
       font-size: 28px;
       line-height: 1;
       text-decoration: none;
@@ -139,11 +133,11 @@
     @media (max-width: 640px) {
       header {
         padding: 40px 16px 28px;
-        row-gap: 0;
       }
 
       .close-button {
-        justify-self: end;
+        top: 40px;
+        right: 16px;
       }
 
       main {
@@ -173,7 +167,7 @@
       <p class="about-image-caption">Portrait by Deema Alghunaim.</p>
     </div>
     <div class="about-right">
-      <p>Caroline Coolidge is driven by investigations of the ephemeral. The screen is the foundation of her practice, both as a material and a metaphor. In her paintings, prints, and installations, she centers on breaking down language, image, and the printing process. Coolidge’s works are remnants of unexpected applications of process and tools, as she questions what it means to see when vision is mediated, realities are no longer certain, and resolution is lost.</p>
+      <p>Caroline Coolidge is driven by investigations of the ephemeral. The <em>screen</em> is the foundation of her practice, both as a material and a metaphor. In her paintings, prints, and installations, she centers on breaking down language, image, and the printing process. Coolidge’s works are remnants of unexpected applications of process and tools, as she questions what it means to see when vision is mediated, realities are no longer certain, and resolution is lost.</p>
 
       <p>Based in Edinburgh, Scotland, Coolidge has exhibited her work internationally in both solo and group presentations. Venues include Edinburgh’s Patriothall Gallery, the Dolphin Gallery at St John's College at the University of Oxford, Spoke Gallery in Boston, and the Carpenter Center for the Visual Arts at Harvard University. Coolidge has held residencies at Estudio Corazón at Ghost Ranch, the Vermont Studio Center, and the Salzburg International Summer Academy of Fine Arts. She worked as a 2023 teaching fellow in the Art, Film, and Visual Studies department at Harvard University and was awarded a 2020 Curatorial Research Fellow at the MIT List Visual Arts Center. She completed her undergraduate studies at Harvard University in 2022 and earned a master's degree with distinction from the Ruskin School of Art at the University of Oxford in 2024.</p>
 
