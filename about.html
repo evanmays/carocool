@@ -23,7 +23,7 @@
     header {
       position: relative;
       text-align: center;
-      padding: 48px 20px 32px;
+      padding: 48px 20px 44px;
     }
 
     header h1 {
@@ -57,28 +57,21 @@
       display: grid;
       grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
       gap: 48px;
-      align-items: start;
+      align-items: stretch;
     }
 
     .about-left {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      min-height: 0;
     }
 
     .about-image {
       width: 100%;
-      height: auto;
+      height: 100%;
       display: block;
       background: #f3f3f3;
-    }
-
-    .about-image-caption {
-      margin-top: 12px;
-      font-size: 16px;
-      color: #6f6f6f;
-      text-align: center;
-      letter-spacing: 0.02em;
+      object-fit: cover;
+      object-position: center;
     }
 
     .about-right {
@@ -96,14 +89,12 @@
     .contact-email {
       color: inherit;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 1px;
-      transition: color 0.2s ease, border-bottom-color 0.2s ease;
+      transition: color 0.2s ease;
     }
 
     .contact-email:hover,
     .contact-email:focus {
-      border-bottom-color: #EE5C35;
+      color: #EE5C35;
     }
 
     .site-footer {
@@ -122,17 +113,17 @@
       }
 
       .about-left {
-        align-items: stretch;
+        min-height: auto;
       }
 
-      .about-image-caption {
-        margin-bottom: 16px;
+      .about-image {
+        height: auto;
       }
     }
 
     @media (max-width: 640px) {
       header {
-        padding: 40px 16px 28px;
+        padding: 40px 16px 36px;
       }
 
       .close-button {
@@ -149,10 +140,6 @@
         font-size: 16px;
         gap: 16px;
       }
-
-      .about-image-caption {
-        font-size: 15px;
-      }
     }
   </style>
 </head>
@@ -164,12 +151,11 @@
   <main>
     <div class="about-left">
       <img src="art3/Caroline-Coolidge-in-her-studio.jpg" alt="Caroline Coolidge in her studio" class="about-image">
-      <p class="about-image-caption">Portrait by Deema Alghunaim.</p>
     </div>
     <div class="about-right">
       <p>Caroline Coolidge is driven by investigations of the ephemeral. The <em>screen</em> is the foundation of her practice, both as a material and a metaphor. In her paintings, prints, and installations, she centers on breaking down language, image, and the printing process. Coolidge’s works are remnants of unexpected applications of process and tools, as she questions what it means to see when vision is mediated, realities are no longer certain, and resolution is lost.</p>
 
-      <p>Based in Edinburgh, Scotland, Coolidge has exhibited her work internationally in both solo and group presentations. Venues include Edinburgh’s Patriothall Gallery, the Dolphin Gallery at St John's College at the University of Oxford, Spoke Gallery in Boston, and the Carpenter Center for the Visual Arts at Harvard University. Coolidge has held residencies at Estudio Corazón at Ghost Ranch, the Vermont Studio Center, and the Salzburg International Summer Academy of Fine Arts. She worked as a 2023 teaching fellow in the Art, Film, and Visual Studies department at Harvard University and was awarded a 2020 Curatorial Research Fellow at the MIT List Visual Arts Center. She completed her undergraduate studies at Harvard University in 2022 and earned a master's degree with distinction from the Ruskin School of Art at the University of Oxford in 2024.</p>
+      <p>Based in Edinburgh, Scotland, Coolidge has exhibited her work internationally in both solo and group presentations. Venues include <a class="contact-email" href="https://www.waspsstudios.org.uk/events/as-smoke-loses-itself-in-air-caroline-coolidge/">Edinburgh’s Patriothall Gallery</a>, the Dolphin Gallery at St John's College at the University of Oxford, <a class="contact-email" href="https://spokeart.org/blog/support-spoke/gallery-text-caroline-coolidge/">Spoke Gallery in Boston</a>, and the <a class="contact-email" href="https://carpenter.center/exhibitions/art-film-and-visual-studies-2022-senior-thesis-exhibition-a-name-for-our-reflections">Carpenter Center for the Visual Arts at Harvard University</a>. Coolidge has held residencies at Estudio Corazón at Ghost Ranch, the Vermont Studio Center, and the Salzburg International Summer Academy of Fine Arts. She worked as a 2023 teaching fellow in the Art, Film, and Visual Studies department at Harvard University and was awarded a 2020 Curatorial Research Fellow at the MIT List Visual Arts Center. She completed her undergraduate studies at Harvard University in 2022 and earned a master's degree with distinction from the Ruskin School of Art at the University of Oxford in 2024.</p>
 
       <p>Coolidge can be contacted via email at <a class="contact-email" href="mailto:studio@carolinecoolidge.com">studio@carolinecoolidge.com</a>.</p>
     </div>
