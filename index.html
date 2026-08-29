@@ -26,7 +26,7 @@
     }
 
     header h1 {
-      font-size: 34px;
+      font-size: 30px;
       font-weight: 400;
       letter-spacing: 0.04em;
       margin: 0;
@@ -44,7 +44,7 @@
       justify-self: center;
       color: #6f6f6f;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 16px;
       transition: color 0.2s ease;
     }
 
@@ -62,7 +62,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 28px;
+      gap: 16px;
     }
 
     figure.artwork {
@@ -121,10 +121,6 @@
       opacity: 0;
     }
 
-    figcaption {
-      display: none;
-    }
-
     .site-footer {
       text-align: center;
       font-size: 16px;
@@ -144,6 +140,10 @@
         padding: 40px 16px 28px;
       }
 
+      header h1 {
+        font-size: 26px;
+      }
+
       .gallery-grid {
         grid-template-columns: 1fr;
       }
@@ -159,9 +159,10 @@
   </header>
   <main>
     <section class="gallery-grid" aria-label="Artwork gallery">
-      <figure class="artwork" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-12" aria-label="View A meditation on water, 2026">
+      <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-12" aria-label="View A meditation on water, 2026">
         <div class="image-stack">
           <img class="base-image" src="art2026/Caroline-Coolidge-Artist-Website-12-A.jpg" alt="A monochrome, highly detailed, and textured horizontal artwork by Caroline Coolidge, with an abstract form in two halves, having a diamond-like shape filling the center." loading="lazy">
+          <img class="hover-image" src="art2026/Caroline-Coolidge-Artist-Website-12-B.jpg" alt="" aria-hidden="true" loading="lazy">
         </div>
       </figure>
       <figure class="artwork has-hover" role="link" tabindex="0" data-group="Caroline-Coolidge-Artist-Website-11" aria-label="View Test Site I–III, 2026">
@@ -233,23 +234,6 @@
     </section>
   </main>
   <script>
-    document.querySelectorAll('img[data-fallback]').forEach((img) => {
-      function handleBaseError() {
-        const fallbackSrc = img.dataset.fallback;
-        if (fallbackSrc && img.src !== fallbackSrc) {
-          img.src = fallbackSrc;
-        } else {
-          img.removeEventListener('error', handleBaseError);
-        }
-      }
-
-      img.addEventListener('error', handleBaseError);
-
-      if (img.complete && img.naturalWidth === 0) {
-        handleBaseError();
-      }
-    });
-
     document.querySelectorAll('.hover-image').forEach((img) => {
       function handleHoverError() {
         const parentFigure = img.closest('.artwork');
@@ -350,65 +334,6 @@
       });
     });
 
-    const captionPhrase = 'As Smoke Loses Itself in Air';
-
-    function italicizePhraseInElement(element, phrase) {
-      if (!element || !phrase) return;
-
-      const walker = document.createTreeWalker(
-        element,
-        NodeFilter.SHOW_TEXT,
-        {
-          acceptNode(node) {
-            return node.textContent && node.textContent.includes(phrase)
-              ? NodeFilter.FILTER_ACCEPT
-              : NodeFilter.FILTER_SKIP;
-          }
-        }
-      );
-
-      const nodesToProcess = [];
-      while (walker.nextNode()) {
-        nodesToProcess.push(walker.currentNode);
-      }
-
-      nodesToProcess.forEach((textNode) => {
-        const originalText = textNode.textContent;
-        if (!originalText) return;
-
-        const parent = textNode.parentNode;
-        if (!parent) return;
-
-        const fragment = document.createDocumentFragment();
-        let searchIndex = 0;
-        let matchIndex = originalText.indexOf(phrase, searchIndex);
-
-        while (matchIndex !== -1) {
-          if (matchIndex > searchIndex) {
-            fragment.appendChild(
-              document.createTextNode(originalText.slice(searchIndex, matchIndex))
-            );
-          }
-
-          const emphasis = document.createElement('em');
-          emphasis.textContent = phrase;
-          fragment.appendChild(emphasis);
-
-          searchIndex = matchIndex + phrase.length;
-          matchIndex = originalText.indexOf(phrase, searchIndex);
-        }
-
-        if (searchIndex < originalText.length) {
-          fragment.appendChild(document.createTextNode(originalText.slice(searchIndex)));
-        }
-
-        parent.replaceChild(fragment, textNode);
-      });
-    }
-
-    document
-      .querySelectorAll('.gallery-caption, figcaption')
-      .forEach((caption) => italicizePhraseInElement(caption, captionPhrase));
   </script>
   <footer class="site-footer"><span>© 2026 Caroline Coolidge</span></footer>
 </body>

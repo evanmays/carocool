@@ -23,27 +23,26 @@
     header {
       position: relative;
       text-align: center;
-      padding: 48px 20px 24px;
+      padding: 48px 20px 32px;
     }
 
     header h1 {
-      font-size: 34px;
+      font-size: 30px;
       font-weight: 400;
       letter-spacing: 0.04em;
       margin: 0;
     }
 
-    .work-subtitle {
-      margin: 32px 0 0;
-      font-size: 18px;
-      color: #555555;
-      text-align: center;
+    .header-nav-spacer {
+      margin-top: 12px;
+      font-size: 16px;
+      visibility: hidden;
     }
 
     .close-button {
       position: absolute;
       top: 48px;
-      right: 20px;
+      right: 32px;
       font-size: 28px;
       line-height: 1;
       text-decoration: none;
@@ -67,13 +66,13 @@
     }
 
     .detail-image {
-      margin: 0 0 28px;
+      margin: 0 0 16px;
       display: flex;
       justify-content: center;
     }
 
     main > .detail-image:last-of-type {
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .detail-image img {
@@ -92,6 +91,10 @@
       text-align: center;
     }
 
+    .work-title {
+      font-size: 18px;
+    }
+
     .work-details p {
       margin: 0;
     }
@@ -100,10 +103,8 @@
       margin-top: 8px;
     }
 
-    .missing-message {
-      text-align: center;
-      margin: 96px 0;
-      font-size: 20px;
+    .work-title + p {
+      margin-top: 14px;
     }
 
     .site-footer {
@@ -114,28 +115,39 @@
       color: #6f6f6f;
     }
 
+    @media (min-width: 900px) {
+      main {
+        max-width: 1200px;
+      }
+
+      .detail-image img {
+        width: min(96%, 1000px);
+      }
+
+      .work-details {
+        max-width: min(96%, 1000px);
+      }
+    }
+
     @media (max-width: 640px) {
       header {
-        padding: 40px 16px 20px;
+        padding: 40px 16px 28px;
+      }
+
+      header h1 {
+        font-size: 26px;
       }
 
       .close-button {
         top: 40px;
-        right: 16px;
+        right: 20px;
       }
 
       main {
         padding: 0 16px 36px;
-        gap: 28px;
+        gap: 0;
       }
 
-      .detail-image {
-        margin: 0 0 24px;
-      }
-
-      main > .detail-image:last-of-type {
-        margin-bottom: 12px;
-      }
     }
   </style>
 </head>
@@ -143,11 +155,9 @@
   <header>
     <a href="index.html" class="close-button" aria-label="Close and return to gallery">&times;</a>
     <h1>Caroline Coolidge</h1>
-    <p class="work-subtitle" data-work-subtitle hidden></p>
+    <div class="header-nav-spacer" aria-hidden="true"><em>About</em></div>
   </header>
-  <main data-detail-container>
-    <p class="missing-message" data-missing-message hidden>Artwork not found. <a href="index.html">Return to the gallery</a>.</p>
-  </main>
+  <main data-detail-container></main>
   <script>
     const ALT_TEXT = {
       "Caroline-Coolidge-Artist-Website-01-A": "A large screen with a black, white, and yellow animation still of abstract lines resembling tree limbs by artist Caroline Coolidge. The screen has speakers on the left and right sides of it and has a tan table with paper stacked on it.",
@@ -195,7 +205,10 @@
       "Caroline-Coolidge-Artist-Website-11-A": "A horizontal abstract painting by Caroline Coolidge comprised of a bright yellow background and dark black, strong and thick gestural strokes.",
       "Caroline-Coolidge-Artist-Website-11-B": "A vertical abstract painting by Caroline Coolidge with a yellow backdrop and dripping gray marks running through the center of the composition in a circular pattern.",
       "Caroline-Coolidge-Artist-Website-11-C": "A vertical abstract painting by Caroline Coolidge with a blue border made from tape and an orange rectangular center with a slash down through the middle, running vertically.",
-      "Caroline-Coolidge-Artist-Website-12-A": "A monochrome, highly detailed, and textured horizontal artwork by Caroline Coolidge, with an abstract form in two halves, having a diamond-like shape filling the center."
+      "Caroline-Coolidge-Artist-Website-12-A": "A monochrome, highly detailed, and textured horizontal artwork by Caroline Coolidge, with an abstract form in two halves, having a diamond-like shape filling the center.",
+      "Caroline-Coolidge-Artist-Website-12-B": "A long, horizontal abstract painting by Caroline Coolidge, predominantly in dark monochrome, but with pops of purple, light blue, and orange, piping through the dark landscape.",
+      "Caroline-Coolidge-Artist-Website-12-C": "A vertical painting by Caroline Coolidge, with black speckles on the left of the composition, white and pink throughout, and a subtle four-point star formed from the textures on the canvas.",
+      "Caroline-Coolidge-Artist-Website-12-D": "A black-and-white monochrome, vertical artwork by Caroline Coolidge with a central vertical section with high contrast of black and white forms, surrounded by a dark gray border."
     };
 
     const WORKS = {
@@ -346,7 +359,10 @@
           "Mixed media on paper, board, and canvas"
         ],
         images: [
-          "art2026/Caroline-Coolidge-Artist-Website-12-A.jpg"
+          "art2026/Caroline-Coolidge-Artist-Website-12-A.jpg",
+          "art2026/Caroline-Coolidge-Artist-Website-12-B.jpg",
+          "art2026/Caroline-Coolidge-Artist-Website-12-C.jpg",
+          "art2026/Caroline-Coolidge-Artist-Website-12-D.jpg"
         ]
       }
     };
@@ -354,8 +370,6 @@
     const params = new URLSearchParams(window.location.search);
     const groupId = params.get('group');
     const detailContainer = document.querySelector('[data-detail-container]');
-    const subtitleEl = document.querySelector('[data-work-subtitle]');
-    const missingMessage = document.querySelector('[data-missing-message]');
 
     const escapeHTML = (value) =>
       String(value).replace(/[&<>"']/g, (char) => (
@@ -396,12 +410,10 @@
     };
 
     if (!groupId || !WORKS[groupId]) {
-      missingMessage.hidden = false;
+      window.location.replace('index.html');
     } else {
       const work = WORKS[groupId];
       document.title = `Caroline Coolidge – ${work.title}`;
-      subtitleEl.innerHTML = formatSubtitle(work.title);
-      subtitleEl.hidden = false;
 
       const fragment = document.createDocumentFragment();
       work.images.forEach((src) => {
@@ -420,18 +432,23 @@
 
       detailContainer.appendChild(fragment);
 
-      if (Array.isArray(work.details) && work.details.length) {
-        const detailsWrapper = document.createElement('section');
-        detailsWrapper.className = 'work-details';
+      const detailsWrapper = document.createElement('section');
+      detailsWrapper.className = 'work-details';
 
+      const title = document.createElement('p');
+      title.className = 'work-title';
+      title.innerHTML = formatSubtitle(work.title);
+      detailsWrapper.appendChild(title);
+
+      if (Array.isArray(work.details) && work.details.length) {
         work.details.forEach((detailLine) => {
           const p = document.createElement('p');
           p.innerHTML = detailLine;
           detailsWrapper.appendChild(p);
         });
-
-        detailContainer.appendChild(detailsWrapper);
       }
+
+      detailContainer.appendChild(detailsWrapper);
     }
   </script>
   <footer class="site-footer"><span>© 2026 Caroline Coolidge</span></footer>
